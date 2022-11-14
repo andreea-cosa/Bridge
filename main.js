@@ -115,8 +115,10 @@ d3.csv("https://uploads-ssl.webflow.com/5d678d8bf62c496d0b518eb4/636e58544fd41cf
       chart29,
       chart30,
       chart31,
-      chart32,
-      chart33,
+      //chart32,
+      percentile32 = 10,
+      percentile33 = 10,
+      // chart33,
       chart34;
 
     drawCharts(rawData);
@@ -134,9 +136,9 @@ d3.csv("https://uploads-ssl.webflow.com/5d678d8bf62c496d0b518eb4/636e58544fd41cf
       );
 
       deleteCharts();
-      if (tempData.length > 0) {
-        drawCharts(tempData);
-      }
+      // if (tempData.length > 0) {
+      drawCharts(tempData);
+      // }
     });
 
     $(".industry_class").change(function (d) {
@@ -187,6 +189,8 @@ d3.csv("https://uploads-ssl.webflow.com/5d678d8bf62c496d0b518eb4/636e58544fd41cf
       percentile14 = 10;
       percentile20 = 10;
       percentile21 = 10;
+      percentile32 = 10;
+      percentile33 = 10;
 
       document.getElementById("percentile_5_h1b_input1").checked = true;
       document.getElementById("percentile_6_h1b_input1").checked = true;
@@ -196,6 +200,12 @@ d3.csv("https://uploads-ssl.webflow.com/5d678d8bf62c496d0b518eb4/636e58544fd41cf
       document.getElementById("percentile_14_F1_input1").checked = true;
       document.getElementById("percentile_20_SIV_input1").checked = true;
       document.getElementById("percentile_21_SIV_input1").checked = true;
+      document.getElementById(
+        "percentile_32_liquidated_damages_input1"
+      ).checked = true;
+      document.getElementById(
+        "percentile_33_liquidated_damages_input1"
+      ).checked = true;
 
       deleteCharts();
       drawCharts(rawData);
@@ -308,6 +318,7 @@ d3.csv("https://uploads-ssl.webflow.com/5d678d8bf62c496d0b518eb4/636e58544fd41cf
     });
 
     $("#percentile_7_h1b_tab4").click(function (d) {
+      console.log("786 75th percentile");
       percentile7 = 75;
       calculatePercentile_7_h1b(
         filterData(selectedEmployee, selectedIndustry, selectedState),
@@ -528,6 +539,88 @@ d3.csv("https://uploads-ssl.webflow.com/5d678d8bf62c496d0b518eb4/636e58544fd41cf
       );
     });
 
+    ///Percentile 32
+    $("#percentile_32_liquidated_damages_tab1").click(function (d) {
+      percentile32 = 10;
+      calculatePercentile_32_liquidated_damages(
+        filterData(selectedEmployee, selectedIndustry, selectedState),
+        percentile32
+      );
+    });
+
+    $("#percentile_32_liquidated_damages_tab2").click(function (d) {
+      percentile32 = 25;
+      calculatePercentile_32_liquidated_damages(
+        filterData(selectedEmployee, selectedIndustry, selectedState),
+        percentile32
+      );
+    });
+
+    $("#percentile_32_liquidated_damages_tab3").click(function (d) {
+      percentile32 = 50;
+      calculatePercentile_32_liquidated_damages(
+        filterData(selectedEmployee, selectedIndustry, selectedState),
+        percentile32
+      );
+    });
+
+    $("#percentile_32_liquidated_damages_tab4").click(function (d) {
+      percentile32 = 75;
+      calculatePercentile_32_liquidated_damages(
+        filterData(selectedEmployee, selectedIndustry, selectedState),
+        percentile32
+      );
+    });
+
+    $("#percentile_32_liquidated_damages_tab5").click(function (d) {
+      percentile32 = 90;
+      calculatePercentile_32_liquidated_damages(
+        filterData(selectedEmployee, selectedIndustry, selectedState),
+        percentile32
+      );
+    });
+
+    ///Percentile 33
+    $("#percentile_33_liquidated_damages_tab1").click(function (d) {
+      percentile33 = 10;
+      calculatePercentile_33_liquidated_damages(
+        filterData(selectedEmployee, selectedIndustry, selectedState),
+        percentile33
+      );
+    });
+
+    $("#percentile_33_liquidated_damages_tab2").click(function (d) {
+      percentile33 = 25;
+      calculatePercentile_33_liquidated_damages(
+        filterData(selectedEmployee, selectedIndustry, selectedState),
+        percentile33
+      );
+    });
+
+    $("#percentile_33_liquidated_damages_tab3").click(function (d) {
+      percentile33 = 50;
+      calculatePercentile_33_liquidated_damages(
+        filterData(selectedEmployee, selectedIndustry, selectedState),
+        percentile33
+      );
+    });
+
+    $("#percentile_33_liquidated_damages_tab4").click(function (d) {
+      percentile33 = 75;
+      calculatePercentile_33_liquidated_damages(
+        filterData(selectedEmployee, selectedIndustry, selectedState),
+        percentile33
+      );
+    });
+
+    $("#percentile_33_liquidated_damages_tab5").click(function (d) {
+      percentile33 = 90;
+      calculatePercentile_33_liquidated_damages(
+        filterData(selectedEmployee, selectedIndustry, selectedState),
+        percentile33
+      );
+    });
+
     function filterData(selectedEmployee, selectedIndustry, selectedState) {
       let tempRawData = JSON.parse(JSON.stringify(rawData));
 
@@ -606,8 +699,8 @@ d3.csv("https://uploads-ssl.webflow.com/5d678d8bf62c496d0b518eb4/636e58544fd41cf
       chart29.destroy();
       chart30.destroy();
       chart31.destroy();
-      chart32.destroy();
-      chart33.destroy();
+      // chart32.destroy();
+      // chart33.destroy();
       chart34.destroy();
     }
 
@@ -642,8 +735,10 @@ d3.csv("https://uploads-ssl.webflow.com/5d678d8bf62c496d0b518eb4/636e58544fd41cf
       chart29 = drawChart29(data);
       chart30 = drawChart30(data);
       chart31 = drawChart31(data);
-      chart32 = drawChart32(data);
-      chart33 = drawChart33(data);
+      //chart32 = drawChart32(data);
+      calculatePercentile_32_liquidated_damages(data, percentile32);
+      calculatePercentile_33_liquidated_damages(data, percentile33);
+      // chart33 = drawChart33(data);
       chart34 = drawChart34(data);
     }
   }
@@ -655,6 +750,22 @@ function getPercentile(data, percentile) {
   });
 
   var index = (percentile / 100) * data.length;
+  var result;
+  if (Math.floor(index) == index) {
+    result = (data[index - 1] + data[index]) / 2;
+  } else {
+    result = data[Math.floor(index)];
+  }
+  return result;
+}
+
+function getInvertedPercentile(data, percentile) {
+  let invertedPercentile = 100 - percentile;
+  data = data.sort(function (a, b) {
+    return a - b;
+  });
+
+  var index = (invertedPercentile / 100) * data.length;
   var result;
   if (Math.floor(index) == index) {
     result = (data[index - 1] + data[index]) / 2;
