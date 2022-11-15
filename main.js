@@ -115,10 +115,10 @@ d3.csv("https://uploads-ssl.webflow.com/5d678d8bf62c496d0b518eb4/636e58544fd41cf
       chart29,
       chart30,
       chart31,
-      chart32,
+      //chart32,
       percentile32 = 10,
       percentile33 = 10,
-      chart33,
+      //chart33,
       chart34;
 
     drawCharts(rawData);
@@ -735,10 +735,10 @@ d3.csv("https://uploads-ssl.webflow.com/5d678d8bf62c496d0b518eb4/636e58544fd41cf
       chart29 = drawChart29(data);
       chart30 = drawChart30(data);
       chart31 = drawChart31(data);
-      //chart32 = drawChart32(data);
+      chart32 = drawChart32(data);
       calculatePercentile_32_liquidated_damages(data, percentile32);
       calculatePercentile_33_liquidated_damages(data, percentile33);
-      // chart33 = drawChart33(data);
+      chart33 = drawChart33(data);
       chart34 = drawChart34(data);
     }
   }
