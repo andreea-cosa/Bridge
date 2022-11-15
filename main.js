@@ -115,10 +115,10 @@ d3.csv("https://uploads-ssl.webflow.com/5d678d8bf62c496d0b518eb4/636e58544fd41cf
       chart29,
       chart30,
       chart31,
-      //chart32,
+      chart32,
       percentile32 = 10,
       percentile33 = 10,
-      // chart33,
+      chart33,
       chart34;
 
     drawCharts(rawData);
