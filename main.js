@@ -699,8 +699,8 @@ d3.csv("https://uploads-ssl.webflow.com/5d678d8bf62c496d0b518eb4/636e58544fd41cf
       chart29.destroy();
       chart30.destroy();
       chart31.destroy();
-      // chart32.destroy();
-      // chart33.destroy();
+      chart32.destroy();
+      chart33.destroy();
       chart34.destroy();
     }
 
