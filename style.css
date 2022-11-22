@@ -1,0 +1,54 @@
+.parent-percentile {
+  display: grid;
+  justify-content: center;
+}
+
+.main-class {
+  width: max-content;
+  background: lightgrey;
+  border-radius: 15px;
+  padding: 15px 11px;
+  font-size: larger;
+}
+
+.label {
+  display: inline-block;
+  margin: 0 0 -1px;
+  padding: 15px 25px;
+  font-weight: 600;
+  text-align: center;
+  color: #bbb;
+  border: 1px solid transparent;
+}
+
+input:not(:checked) + .label:hover {
+  color: #888;
+  cursor: pointer;
+}
+
+input:checked + label {
+  color: steelblue;
+}
+
+/* #tsum-tabs #tab1:checked ~ #content1,
+#tsum-tabs #tab2:checked ~ #content2,
+#tsum-tabs #tab3:checked ~ #content3,
+#tsum-tabs #tab4:checked ~ #content4 {
+  display: block;
+} */
+
+@media screen and (max-width: 650px) {
+  .label {
+    font-size: 0;
+  }
+  .label:before {
+    margin: 0;
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .label {
+    padding: 15px;
+  }
+}
