@@ -5,7 +5,7 @@ function drawChart34(data) {
     if (
       d["Who is responsible for immigration costs at your company?"] != "" &&
       optionsObj34[
-        d["Who is responsible for immigration costs at your company?"]
+      d["Who is responsible for immigration costs at your company?"]
       ] == undefined
     ) {
       optionsObj34[
@@ -14,14 +14,14 @@ function drawChart34(data) {
     } else if (
       d["Who is responsible for immigration costs at your company?"] != "" &&
       optionsObj34[
-        d["Who is responsible for immigration costs at your company?"]
+      d["Who is responsible for immigration costs at your company?"]
       ] != undefined
     ) {
       optionsObj34[
         d["Who is responsible for immigration costs at your company?"]
       ] =
         optionsObj34[
-          d["Who is responsible for immigration costs at your company?"]
+        d["Who is responsible for immigration costs at your company?"]
         ] + 1;
     }
   });
@@ -69,7 +69,7 @@ function drawChart34(data) {
       },
       responsive: true,
       maintainAspectRatio: true,
-      aspectRatio: 0.7,
+      aspectRatio: getAspectRatio(),
       layout: {
         padding: {
           top: 40,
@@ -98,14 +98,13 @@ function drawChart34(data) {
               formatter: function (value, ctx34) {
                 return ctx34.chart.data.labels[ctx34.dataIndex].length > 25
                   ? ctx34.chart.data.labels[ctx34.dataIndex].substring(0, 25) +
-                      "..."
+                  "..."
                   : ctx34.chart.data.labels[ctx34.dataIndex] +
-                      " " +
-                      `${
-                        Math.round(
-                          ((value / total34) * 100 + Number.EPSILON) * 100
-                        ) / 100
-                      }%`;
+                  " " +
+                  `${Math.round(
+                    ((value / total34) * 100 + Number.EPSILON) * 100
+                  ) / 100
+                  }%`;
               },
               offset: 3,
             },
@@ -124,11 +123,10 @@ function drawChart34(data) {
           },
           callbacks: {
             label: function (value, context) {
-              return `${value.label}: ${value.raw} (${
-                Math.round(
-                  ((value.raw / total34) * 100 + Number.EPSILON) * 100
-                ) / 100
-              })%`;
+              return `${value.label}: ${value.raw} (${Math.round(
+                ((value.raw / total34) * 100 + Number.EPSILON) * 100
+              ) / 100
+                })%`;
             },
           },
         },

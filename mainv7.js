@@ -850,12 +850,11 @@ const externalTooltipHandler = (context, total) => {
       td.style.borderWidth = 0;
 
       const text = document.createTextNode(
-        `${body} (${
-          Math.round(
-            ((parseFloat(body[0].split(":")[1].split(" ")[1]) / total) * 100 +
-              Number.EPSILON) *
-              100
-          ) / 100
+        `${body} (${Math.round(
+          ((parseFloat(body[0].split(":")[1].split(" ")[1]) / total) * 100 +
+            Number.EPSILON) *
+          100
+        ) / 100
         })%`
       );
 
@@ -885,4 +884,11 @@ const externalTooltipHandler = (context, total) => {
   tooltipEl.style.font = tooltip.options.bodyFont.string;
   tooltipEl.style.padding =
     tooltip.options.padding + "px " + tooltip.options.padding + "px";
+};
+
+const getAspectRatio = () => {
+  if (window.innerWidth < 768) {
+    return 0.7;
+  }
+  return 1;
 };

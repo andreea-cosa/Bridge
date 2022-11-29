@@ -57,7 +57,7 @@ function drawChart24(data) {
       },
       responsive: true,
       maintainAspectRatio: true,
-      aspectRatio: 0.7,
+      aspectRatio: getAspectRatio(),
       layout: {
         padding: {
           top: 40,
