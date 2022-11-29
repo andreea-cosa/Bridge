@@ -68,7 +68,7 @@ function drawChart34(data) {
         duration: 2001,
       },
       responsive: true,
-      maintainAspectRatio: false,
+      maintainAspectRatio: true,
       aspectRatio: 0.7,
       layout: {
         padding: {
