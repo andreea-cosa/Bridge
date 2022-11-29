@@ -4,38 +4,38 @@ function drawChart26(data) {
   data.forEach((d) => {
     if (
       d[
-        "Do you cover Green Card processing costs for the employee's dependent family members?"
+      "Do you cover Green Card processing costs for the employee's dependent family members?"
       ] != "" &&
       optionsObj26[
-        d[
-          "Do you cover Green Card processing costs for the employee's dependent family members?"
-        ]
+      d[
+      "Do you cover Green Card processing costs for the employee's dependent family members?"
+      ]
       ] == undefined
     ) {
       optionsObj26[
         d[
-          "Do you cover Green Card processing costs for the employee's dependent family members?"
+        "Do you cover Green Card processing costs for the employee's dependent family members?"
         ]
       ] = 1;
     } else if (
       d[
-        "Do you cover Green Card processing costs for the employee's dependent family members?"
+      "Do you cover Green Card processing costs for the employee's dependent family members?"
       ] != "" &&
       optionsObj26[
-        d[
-          "Do you cover Green Card processing costs for the employee's dependent family members?"
-        ]
+      d[
+      "Do you cover Green Card processing costs for the employee's dependent family members?"
+      ]
       ] != undefined
     ) {
       optionsObj26[
         d[
-          "Do you cover Green Card processing costs for the employee's dependent family members?"
+        "Do you cover Green Card processing costs for the employee's dependent family members?"
         ]
       ] =
         optionsObj26[
-          d[
-            "Do you cover Green Card processing costs for the employee's dependent family members?"
-          ]
+        d[
+        "Do you cover Green Card processing costs for the employee's dependent family members?"
+        ]
         ] + 1;
     }
   });
@@ -81,7 +81,7 @@ function drawChart26(data) {
       },
       responsive: true,
       maintainAspectRatio: true,
-      aspectRatio: 1,
+      aspectRatio: 0.7,
       layout: {
         padding: {
           top: 40,
@@ -110,14 +110,13 @@ function drawChart26(data) {
               formatter: function (value, ctx26) {
                 return ctx26.chart.data.labels[ctx26.dataIndex].length > 25
                   ? ctx26.chart.data.labels[ctx26.dataIndex].substring(0, 25) +
-                      "..."
+                  "..."
                   : ctx26.chart.data.labels[ctx26.dataIndex] +
-                      " " +
-                      `${
-                        Math.round(
-                          ((value / total26) * 100 + Number.EPSILON) * 100
-                        ) / 100
-                      }%`;
+                  " " +
+                  `${Math.round(
+                    ((value / total26) * 100 + Number.EPSILON) * 100
+                  ) / 100
+                  }%`;
               },
               offset: 3,
             },
@@ -136,11 +135,10 @@ function drawChart26(data) {
           },
           callbacks: {
             label: function (value, context) {
-              return `${value.label}: ${value.raw} (${
-                Math.round(
-                  ((value.raw / total26) * 100 + Number.EPSILON) * 100
-                ) / 100
-              })%`;
+              return `${value.label}: ${value.raw} (${Math.round(
+                ((value.raw / total26) * 100 + Number.EPSILON) * 100
+              ) / 100
+                })%`;
             },
           },
         },

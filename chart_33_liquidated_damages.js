@@ -60,7 +60,7 @@ function drawChart33(data) {
       },
       responsive: true,
       maintainAspectRatio: true,
-      aspectRatio: 1,
+      aspectRatio: 0.7,
       layout: {
         padding: {
           top: 40,
@@ -90,11 +90,10 @@ function drawChart33(data) {
           },
           callbacks: {
             label: function (value, context) {
-              return `${value.label}: ${value.raw} (${
-                Math.round(
-                  ((value.raw / total33) * 100 + Number.EPSILON) * 100
-                ) / 100
-              })%`;
+              return `${value.label}: ${value.raw} (${Math.round(
+                ((value.raw / total33) * 100 + Number.EPSILON) * 100
+              ) / 100
+                })%`;
             },
           },
         },

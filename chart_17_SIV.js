@@ -4,38 +4,38 @@ function drawChart17(data) {
   data.forEach((d) => {
     if (
       d[
-        "Are single intent visa employees eligible for Green Card sponsorship?"
+      "Are single intent visa employees eligible for Green Card sponsorship?"
       ] != "" &&
       optionsObj17[
-        d[
-          "Are single intent visa employees eligible for Green Card sponsorship?"
-        ]
+      d[
+      "Are single intent visa employees eligible for Green Card sponsorship?"
+      ]
       ] == undefined
     ) {
       optionsObj17[
         d[
-          "Are single intent visa employees eligible for Green Card sponsorship?"
+        "Are single intent visa employees eligible for Green Card sponsorship?"
         ]
       ] = 1;
     } else if (
       d[
-        "Are single intent visa employees eligible for Green Card sponsorship?"
+      "Are single intent visa employees eligible for Green Card sponsorship?"
       ] != "" &&
       optionsObj17[
-        d[
-          "Are single intent visa employees eligible for Green Card sponsorship?"
-        ]
+      d[
+      "Are single intent visa employees eligible for Green Card sponsorship?"
+      ]
       ] != undefined
     ) {
       optionsObj17[
         d[
-          "Are single intent visa employees eligible for Green Card sponsorship?"
+        "Are single intent visa employees eligible for Green Card sponsorship?"
         ]
       ] =
         optionsObj17[
-          d[
-            "Are single intent visa employees eligible for Green Card sponsorship?"
-          ]
+        d[
+        "Are single intent visa employees eligible for Green Card sponsorship?"
+        ]
         ] + 1;
     }
   });
@@ -75,7 +75,7 @@ function drawChart17(data) {
       },
       responsive: true,
       maintainAspectRatio: true,
-      aspectRatio: 1,
+      aspectRatio: 0.7,
       layout: {
         padding: {
           top: 40,
@@ -105,10 +105,9 @@ function drawChart17(data) {
                 return (
                   ctx17.chart.data.labels[ctx17.dataIndex] +
                   " " +
-                  `${
-                    Math.round(
-                      ((value / total17) * 100 + Number.EPSILON) * 100
-                    ) / 100
+                  `${Math.round(
+                    ((value / total17) * 100 + Number.EPSILON) * 100
+                  ) / 100
                   }%`
                 );
               },
@@ -129,11 +128,10 @@ function drawChart17(data) {
           },
           callbacks: {
             label: function (value, context) {
-              return `${value.label}: ${value.raw} (${
-                Math.round(
-                  ((value.raw / total17) * 100 + Number.EPSILON) * 100
-                ) / 100
-              })%`;
+              return `${value.label}: ${value.raw} (${Math.round(
+                ((value.raw / total17) * 100 + Number.EPSILON) * 100
+              ) / 100
+                })%`;
             },
           },
         },

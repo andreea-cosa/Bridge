@@ -4,38 +4,38 @@ function drawChart30(data) {
   data.forEach((d) => {
     if (
       d[
-        "If an application is filed with USCIS' Premium Processing option, who covers the cost?"
+      "If an application is filed with USCIS' Premium Processing option, who covers the cost?"
       ] != "" &&
       optionsObj30[
-        d[
-          "If an application is filed with USCIS' Premium Processing option, who covers the cost?"
-        ]
+      d[
+      "If an application is filed with USCIS' Premium Processing option, who covers the cost?"
+      ]
       ] == undefined
     ) {
       optionsObj30[
         d[
-          "If an application is filed with USCIS' Premium Processing option, who covers the cost?"
+        "If an application is filed with USCIS' Premium Processing option, who covers the cost?"
         ]
       ] = 1;
     } else if (
       d[
-        "If an application is filed with USCIS' Premium Processing option, who covers the cost?"
+      "If an application is filed with USCIS' Premium Processing option, who covers the cost?"
       ] != "" &&
       optionsObj30[
-        d[
-          "If an application is filed with USCIS' Premium Processing option, who covers the cost?"
-        ]
+      d[
+      "If an application is filed with USCIS' Premium Processing option, who covers the cost?"
+      ]
       ] != undefined
     ) {
       optionsObj30[
         d[
-          "If an application is filed with USCIS' Premium Processing option, who covers the cost?"
+        "If an application is filed with USCIS' Premium Processing option, who covers the cost?"
         ]
       ] =
         optionsObj30[
-          d[
-            "If an application is filed with USCIS' Premium Processing option, who covers the cost?"
-          ]
+        d[
+        "If an application is filed with USCIS' Premium Processing option, who covers the cost?"
+        ]
         ] + 1;
     }
   });
@@ -83,7 +83,7 @@ function drawChart30(data) {
       },
       responsive: true,
       maintainAspectRatio: true,
-      aspectRatio: 1,
+      aspectRatio: 0.7,
       layout: {
         padding: {
           top: 40,
@@ -112,14 +112,13 @@ function drawChart30(data) {
               formatter: function (value, ctx30) {
                 return ctx30.chart.data.labels[ctx30.dataIndex].length > 25
                   ? ctx30.chart.data.labels[ctx30.dataIndex].substring(0, 25) +
-                      "..."
+                  "..."
                   : ctx30.chart.data.labels[ctx30.dataIndex] +
-                      " " +
-                      `${
-                        Math.round(
-                          ((value / total30) * 100 + Number.EPSILON) * 100
-                        ) / 100
-                      }%`;
+                  " " +
+                  `${Math.round(
+                    ((value / total30) * 100 + Number.EPSILON) * 100
+                  ) / 100
+                  }%`;
               },
               offset: 3,
             },
@@ -138,11 +137,10 @@ function drawChart30(data) {
           },
           callbacks: {
             label: function (value, context) {
-              return `${value.label}: ${value.raw} (${
-                Math.round(
-                  ((value.raw / total30) * 100 + Number.EPSILON) * 100
-                ) / 100
-              })%`;
+              return `${value.label}: ${value.raw} (${Math.round(
+                ((value.raw / total30) * 100 + Number.EPSILON) * 100
+              ) / 100
+                })%`;
             },
           },
         },

@@ -57,7 +57,7 @@ function drawChart24(data) {
       },
       responsive: true,
       maintainAspectRatio: true,
-      aspectRatio: 1,
+      aspectRatio: 0.7,
       layout: {
         padding: {
           top: 40,
@@ -87,10 +87,9 @@ function drawChart24(data) {
                 return (
                   ctx24.chart.data.labels[ctx24.dataIndex] +
                   " " +
-                  `${
-                    Math.round(
-                      ((value / total24) * 100 + Number.EPSILON) * 100
-                    ) / 100
+                  `${Math.round(
+                    ((value / total24) * 100 + Number.EPSILON) * 100
+                  ) / 100
                   }%`
                 );
               },
@@ -111,11 +110,10 @@ function drawChart24(data) {
           },
           callbacks: {
             label: function (value, context) {
-              return `${value.label}: ${value.raw} (${
-                Math.round(
-                  ((value.raw / total24) * 100 + Number.EPSILON) * 100
-                ) / 100
-              })%`;
+              return `${value.label}: ${value.raw} (${Math.round(
+                ((value.raw / total24) * 100 + Number.EPSILON) * 100
+              ) / 100
+                })%`;
             },
           },
         },

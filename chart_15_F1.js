@@ -4,38 +4,38 @@ function drawChart15(data) {
   data.forEach((d) => {
     if (
       d[
-        "Do you require that the F-1 OPT candidate has a minimum time period of OPT or STEM OPT remaining for them to be eligible for hire?"
+      "Do you require that the F-1 OPT candidate has a minimum time period of OPT or STEM OPT remaining for them to be eligible for hire?"
       ] != "" &&
       optionsObj15[
-        d[
-          "Do you require that the F-1 OPT candidate has a minimum time period of OPT or STEM OPT remaining for them to be eligible for hire?"
-        ]
+      d[
+      "Do you require that the F-1 OPT candidate has a minimum time period of OPT or STEM OPT remaining for them to be eligible for hire?"
+      ]
       ] == undefined
     ) {
       optionsObj15[
         d[
-          "Do you require that the F-1 OPT candidate has a minimum time period of OPT or STEM OPT remaining for them to be eligible for hire?"
+        "Do you require that the F-1 OPT candidate has a minimum time period of OPT or STEM OPT remaining for them to be eligible for hire?"
         ]
       ] = 1;
     } else if (
       d[
-        "Do you require that the F-1 OPT candidate has a minimum time period of OPT or STEM OPT remaining for them to be eligible for hire?"
+      "Do you require that the F-1 OPT candidate has a minimum time period of OPT or STEM OPT remaining for them to be eligible for hire?"
       ] != "" &&
       optionsObj15[
-        d[
-          "Do you require that the F-1 OPT candidate has a minimum time period of OPT or STEM OPT remaining for them to be eligible for hire?"
-        ]
+      d[
+      "Do you require that the F-1 OPT candidate has a minimum time period of OPT or STEM OPT remaining for them to be eligible for hire?"
+      ]
       ] != undefined
     ) {
       optionsObj15[
         d[
-          "Do you require that the F-1 OPT candidate has a minimum time period of OPT or STEM OPT remaining for them to be eligible for hire?"
+        "Do you require that the F-1 OPT candidate has a minimum time period of OPT or STEM OPT remaining for them to be eligible for hire?"
         ]
       ] =
         optionsObj15[
-          d[
-            "Do you require that the F-1 OPT candidate has a minimum time period of OPT or STEM OPT remaining for them to be eligible for hire?"
-          ]
+        d[
+        "Do you require that the F-1 OPT candidate has a minimum time period of OPT or STEM OPT remaining for them to be eligible for hire?"
+        ]
         ] + 1;
     }
   });
@@ -75,7 +75,7 @@ function drawChart15(data) {
       },
       responsive: true,
       maintainAspectRatio: true,
-      aspectRatio: 1,
+      aspectRatio: 0.7,
       layout: {
         padding: {
           top: 40,
@@ -105,10 +105,9 @@ function drawChart15(data) {
                 return (
                   ctx15.chart.data.labels[ctx15.dataIndex] +
                   " " +
-                  `${
-                    Math.round(
-                      ((value / total15) * 100 + Number.EPSILON) * 100
-                    ) / 100
+                  `${Math.round(
+                    ((value / total15) * 100 + Number.EPSILON) * 100
+                  ) / 100
                   }%`
                 );
               },
@@ -129,11 +128,10 @@ function drawChart15(data) {
           },
           callbacks: {
             label: function (value, context) {
-              return `${value.label}: ${value.raw} (${
-                Math.round(
-                  ((value.raw / total15) * 100 + Number.EPSILON) * 100
-                ) / 100
-              })%`;
+              return `${value.label}: ${value.raw} (${Math.round(
+                ((value.raw / total15) * 100 + Number.EPSILON) * 100
+              ) / 100
+                })%`;
             },
           },
         },

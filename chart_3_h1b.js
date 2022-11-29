@@ -5,7 +5,7 @@ function drawChart3(data) {
     if (
       d["Are H-1B employees eligible for Green Card sponsorship?"] != "" &&
       optionsObj3[
-        d["Are H-1B employees eligible for Green Card sponsorship?"]
+      d["Are H-1B employees eligible for Green Card sponsorship?"]
       ] == undefined
     ) {
       optionsObj3[
@@ -14,14 +14,14 @@ function drawChart3(data) {
     } else if (
       d["Are H-1B employees eligible for Green Card sponsorship?"] != "" &&
       optionsObj3[
-        d["Are H-1B employees eligible for Green Card sponsorship?"]
+      d["Are H-1B employees eligible for Green Card sponsorship?"]
       ] != undefined
     ) {
       optionsObj3[
         d["Are H-1B employees eligible for Green Card sponsorship?"]
       ] =
         optionsObj3[
-          d["Are H-1B employees eligible for Green Card sponsorship?"]
+        d["Are H-1B employees eligible for Green Card sponsorship?"]
         ] + 1;
     }
   });
@@ -61,7 +61,7 @@ function drawChart3(data) {
       },
       responsive: true,
       maintainAspectRatio: true,
-      aspectRatio: 1,
+      aspectRatio: 0.7,
       layout: {
         padding: {
           top: 40,
@@ -91,10 +91,9 @@ function drawChart3(data) {
                 return (
                   ctx3.chart.data.labels[ctx3.dataIndex] +
                   " " +
-                  `${
-                    Math.round(
-                      ((value / total3) * 100 + Number.EPSILON) * 100
-                    ) / 100
+                  `${Math.round(
+                    ((value / total3) * 100 + Number.EPSILON) * 100
+                  ) / 100
                   }%`
                 );
               },
@@ -115,11 +114,10 @@ function drawChart3(data) {
           },
           callbacks: {
             label: function (value, context) {
-              return `${value.label}: ${value.raw} (${
-                Math.round(
-                  ((value.raw / total3) * 100 + Number.EPSILON) * 100
-                ) / 100
-              })%`;
+              return `${value.label}: ${value.raw} (${Math.round(
+                ((value.raw / total3) * 100 + Number.EPSILON) * 100
+              ) / 100
+                })%`;
             },
           },
         },

@@ -5,13 +5,13 @@ function drawChart1(data) {
     if (
       d["Does your company hire candidates on H-1B visas?"] != "" &&
       optionsObj1[d["Does your company hire candidates on H-1B visas?"]] ==
-        undefined
+      undefined
     ) {
       optionsObj1[d["Does your company hire candidates on H-1B visas?"]] = 1;
     } else if (
       d["Does your company hire candidates on H-1B visas?"] != "" &&
       optionsObj1[d["Does your company hire candidates on H-1B visas?"]] !=
-        undefined
+      undefined
     ) {
       optionsObj1[d["Does your company hire candidates on H-1B visas?"]] =
         optionsObj1[d["Does your company hire candidates on H-1B visas?"]] + 1;
@@ -53,7 +53,7 @@ function drawChart1(data) {
       },
       responsive: true,
       maintainAspectRatio: true,
-      aspectRatio: 1,
+      aspectRatio: 0.7,
       layout: {
         padding: {
           top: 40,
@@ -83,10 +83,9 @@ function drawChart1(data) {
                 return (
                   ctx1.chart.data.labels[ctx1.dataIndex] +
                   " " +
-                  `${
-                    Math.round(
-                      ((value / total1) * 100 + Number.EPSILON) * 100
-                    ) / 100
+                  `${Math.round(
+                    ((value / total1) * 100 + Number.EPSILON) * 100
+                  ) / 100
                   }%`
                 );
               },
@@ -107,11 +106,10 @@ function drawChart1(data) {
           },
           callbacks: {
             label: function (value, context) {
-              return `${value.label}: ${value.raw} (${
-                Math.round(
-                  ((value.raw / total1) * 100 + Number.EPSILON) * 100
-                ) / 100
-              })%`;
+              return `${value.label}: ${value.raw} (${Math.round(
+                ((value.raw / total1) * 100 + Number.EPSILON) * 100
+              ) / 100
+                })%`;
             },
           },
         },

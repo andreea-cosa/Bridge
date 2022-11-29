@@ -4,38 +4,38 @@ function drawChart28(data) {
   data.forEach((d) => {
     if (
       d[
-        "Will you cover travel expenses related to consular processing of visa applications?"
+      "Will you cover travel expenses related to consular processing of visa applications?"
       ] != "" &&
       optionsObj28[
-        d[
-          "Will you cover travel expenses related to consular processing of visa applications?"
-        ]
+      d[
+      "Will you cover travel expenses related to consular processing of visa applications?"
+      ]
       ] == undefined
     ) {
       optionsObj28[
         d[
-          "Will you cover travel expenses related to consular processing of visa applications?"
+        "Will you cover travel expenses related to consular processing of visa applications?"
         ]
       ] = 1;
     } else if (
       d[
-        "Will you cover travel expenses related to consular processing of visa applications?"
+      "Will you cover travel expenses related to consular processing of visa applications?"
       ] != "" &&
       optionsObj28[
-        d[
-          "Will you cover travel expenses related to consular processing of visa applications?"
-        ]
+      d[
+      "Will you cover travel expenses related to consular processing of visa applications?"
+      ]
       ] != undefined
     ) {
       optionsObj28[
         d[
-          "Will you cover travel expenses related to consular processing of visa applications?"
+        "Will you cover travel expenses related to consular processing of visa applications?"
         ]
       ] =
         optionsObj28[
-          d[
-            "Will you cover travel expenses related to consular processing of visa applications?"
-          ]
+        d[
+        "Will you cover travel expenses related to consular processing of visa applications?"
+        ]
         ] + 1;
     }
   });
@@ -83,7 +83,7 @@ function drawChart28(data) {
       },
       responsive: true,
       maintainAspectRatio: true,
-      aspectRatio: 1,
+      aspectRatio: 0.7,
       layout: {
         padding: {
           top: 40,
@@ -113,10 +113,9 @@ function drawChart28(data) {
                 return (
                   ctx28.chart.data.labels[ctx28.dataIndex] +
                   " " +
-                  `${
-                    Math.round(
-                      ((value / total28) * 100 + Number.EPSILON) * 100
-                    ) / 100
+                  `${Math.round(
+                    ((value / total28) * 100 + Number.EPSILON) * 100
+                  ) / 100
                   }%`
                 );
               },
@@ -137,11 +136,10 @@ function drawChart28(data) {
           },
           callbacks: {
             label: function (value, context) {
-              return `${value.label}: ${value.raw} (${
-                Math.round(
-                  ((value.raw / total28) * 100 + Number.EPSILON) * 100
-                ) / 100
-              })%`;
+              return `${value.label}: ${value.raw} (${Math.round(
+                ((value.raw / total28) * 100 + Number.EPSILON) * 100
+              ) / 100
+                })%`;
             },
           },
         },

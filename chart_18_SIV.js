@@ -4,38 +4,38 @@ function drawChart18(data) {
   data.forEach((d) => {
     if (
       d[
-        "Are single intent visa employees eligible for H-1B lottery sponsorship?"
+      "Are single intent visa employees eligible for H-1B lottery sponsorship?"
       ] != "" &&
       optionsObj18[
-        d[
-          "Are single intent visa employees eligible for H-1B lottery sponsorship?"
-        ]
+      d[
+      "Are single intent visa employees eligible for H-1B lottery sponsorship?"
+      ]
       ] == undefined
     ) {
       optionsObj18[
         d[
-          "Are single intent visa employees eligible for H-1B lottery sponsorship?"
+        "Are single intent visa employees eligible for H-1B lottery sponsorship?"
         ]
       ] = 1;
     } else if (
       d[
-        "Are single intent visa employees eligible for H-1B lottery sponsorship?"
+      "Are single intent visa employees eligible for H-1B lottery sponsorship?"
       ] != "" &&
       optionsObj18[
-        d[
-          "Are single intent visa employees eligible for H-1B lottery sponsorship?"
-        ]
+      d[
+      "Are single intent visa employees eligible for H-1B lottery sponsorship?"
+      ]
       ] != undefined
     ) {
       optionsObj18[
         d[
-          "Are single intent visa employees eligible for H-1B lottery sponsorship?"
+        "Are single intent visa employees eligible for H-1B lottery sponsorship?"
         ]
       ] =
         optionsObj18[
-          d[
-            "Are single intent visa employees eligible for H-1B lottery sponsorship?"
-          ]
+        d[
+        "Are single intent visa employees eligible for H-1B lottery sponsorship?"
+        ]
         ] + 1;
     }
   });
@@ -74,7 +74,7 @@ function drawChart18(data) {
       },
       responsive: true,
       maintainAspectRatio: true,
-      aspectRatio: 1,
+      aspectRatio: 0.7,
       layout: {
         padding: {
           top: 40,
@@ -104,10 +104,9 @@ function drawChart18(data) {
                 return (
                   ctx18.chart.data.labels[ctx18.dataIndex] +
                   " " +
-                  `${
-                    Math.round(
-                      ((value / total18) * 100 + Number.EPSILON) * 100
-                    ) / 100
+                  `${Math.round(
+                    ((value / total18) * 100 + Number.EPSILON) * 100
+                  ) / 100
                   }%`
                 );
               },
@@ -128,11 +127,10 @@ function drawChart18(data) {
           },
           callbacks: {
             label: function (value, context) {
-              return `${value.label}: ${value.raw} (${
-                Math.round(
-                  ((value.raw / total18) * 100 + Number.EPSILON) * 100
-                ) / 100
-              })%`;
+              return `${value.label}: ${value.raw} (${Math.round(
+                ((value.raw / total18) * 100 + Number.EPSILON) * 100
+              ) / 100
+                })%`;
             },
           },
         },

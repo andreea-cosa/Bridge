@@ -4,38 +4,38 @@ function drawChart27(data) {
   data.forEach((d) => {
     if (
       d[
-        "Do you cover non-immigrant visa costs for the employee's dependent family members?"
+      "Do you cover non-immigrant visa costs for the employee's dependent family members?"
       ] != "" &&
       optionsObj27[
-        d[
-          "Do you cover non-immigrant visa costs for the employee's dependent family members?"
-        ]
+      d[
+      "Do you cover non-immigrant visa costs for the employee's dependent family members?"
+      ]
       ] == undefined
     ) {
       optionsObj27[
         d[
-          "Do you cover non-immigrant visa costs for the employee's dependent family members?"
+        "Do you cover non-immigrant visa costs for the employee's dependent family members?"
         ]
       ] = 1;
     } else if (
       d[
-        "Do you cover non-immigrant visa costs for the employee's dependent family members?"
+      "Do you cover non-immigrant visa costs for the employee's dependent family members?"
       ] != "" &&
       optionsObj27[
-        d[
-          "Do you cover non-immigrant visa costs for the employee's dependent family members?"
-        ]
+      d[
+      "Do you cover non-immigrant visa costs for the employee's dependent family members?"
+      ]
       ] != undefined
     ) {
       optionsObj27[
         d[
-          "Do you cover non-immigrant visa costs for the employee's dependent family members?"
+        "Do you cover non-immigrant visa costs for the employee's dependent family members?"
         ]
       ] =
         optionsObj27[
-          d[
-            "Do you cover non-immigrant visa costs for the employee's dependent family members?"
-          ]
+        d[
+        "Do you cover non-immigrant visa costs for the employee's dependent family members?"
+        ]
         ] + 1;
     }
   });
@@ -81,7 +81,7 @@ function drawChart27(data) {
       },
       responsive: true,
       maintainAspectRatio: true,
-      aspectRatio: 1,
+      aspectRatio: 0.7,
       layout: {
         padding: {
           top: 40,
@@ -110,14 +110,13 @@ function drawChart27(data) {
               formatter: function (value, ctx27) {
                 return ctx27.chart.data.labels[ctx27.dataIndex].length > 25
                   ? ctx27.chart.data.labels[ctx27.dataIndex].substring(0, 25) +
-                      "..."
+                  "..."
                   : ctx27.chart.data.labels[ctx27.dataIndex] +
-                      " " +
-                      `${
-                        Math.round(
-                          ((value / total27) * 100 + Number.EPSILON) * 100
-                        ) / 100
-                      }%`;
+                  " " +
+                  `${Math.round(
+                    ((value / total27) * 100 + Number.EPSILON) * 100
+                  ) / 100
+                  }%`;
               },
               offset: 3,
             },
@@ -136,11 +135,10 @@ function drawChart27(data) {
           },
           callbacks: {
             label: function (value, context) {
-              return `${value.label}: ${value.raw} (${
-                Math.round(
-                  ((value.raw / total27) * 100 + Number.EPSILON) * 100
-                ) / 100
-              })%`;
+              return `${value.label}: ${value.raw} (${Math.round(
+                ((value.raw / total27) * 100 + Number.EPSILON) * 100
+              ) / 100
+                })%`;
             },
           },
         },

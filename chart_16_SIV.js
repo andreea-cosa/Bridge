@@ -4,38 +4,38 @@ function drawChart16(data) {
   data.forEach((d) => {
     if (
       d[
-        "Does your company sponsor single intent visas (e.g. TN, E-2, E-3, O-1) that can be renewed indefinitely?"
+      "Does your company sponsor single intent visas (e.g. TN, E-2, E-3, O-1) that can be renewed indefinitely?"
       ] != "" &&
       optionsObj16[
-        d[
-          "Does your company sponsor single intent visas (e.g. TN, E-2, E-3, O-1) that can be renewed indefinitely?"
-        ]
+      d[
+      "Does your company sponsor single intent visas (e.g. TN, E-2, E-3, O-1) that can be renewed indefinitely?"
+      ]
       ] == undefined
     ) {
       optionsObj16[
         d[
-          "Does your company sponsor single intent visas (e.g. TN, E-2, E-3, O-1) that can be renewed indefinitely?"
+        "Does your company sponsor single intent visas (e.g. TN, E-2, E-3, O-1) that can be renewed indefinitely?"
         ]
       ] = 1;
     } else if (
       d[
-        "Does your company sponsor single intent visas (e.g. TN, E-2, E-3, O-1) that can be renewed indefinitely?"
+      "Does your company sponsor single intent visas (e.g. TN, E-2, E-3, O-1) that can be renewed indefinitely?"
       ] != "" &&
       optionsObj16[
-        d[
-          "Does your company sponsor single intent visas (e.g. TN, E-2, E-3, O-1) that can be renewed indefinitely?"
-        ]
+      d[
+      "Does your company sponsor single intent visas (e.g. TN, E-2, E-3, O-1) that can be renewed indefinitely?"
+      ]
       ] != undefined
     ) {
       optionsObj16[
         d[
-          "Does your company sponsor single intent visas (e.g. TN, E-2, E-3, O-1) that can be renewed indefinitely?"
+        "Does your company sponsor single intent visas (e.g. TN, E-2, E-3, O-1) that can be renewed indefinitely?"
         ]
       ] =
         optionsObj16[
-          d[
-            "Does your company sponsor single intent visas (e.g. TN, E-2, E-3, O-1) that can be renewed indefinitely?"
-          ]
+        d[
+        "Does your company sponsor single intent visas (e.g. TN, E-2, E-3, O-1) that can be renewed indefinitely?"
+        ]
         ] + 1;
     }
   });
@@ -75,7 +75,7 @@ function drawChart16(data) {
       },
       responsive: true,
       maintainAspectRatio: true,
-      aspectRatio: 1,
+      aspectRatio: 0.7,
       layout: {
         padding: {
           top: 40,
@@ -105,10 +105,9 @@ function drawChart16(data) {
                 return (
                   ctx16.chart.data.labels[ctx16.dataIndex] +
                   " " +
-                  `${
-                    Math.round(
-                      ((value / total16) * 100 + Number.EPSILON) * 100
-                    ) / 100
+                  `${Math.round(
+                    ((value / total16) * 100 + Number.EPSILON) * 100
+                  ) / 100
                   }%`
                 );
               },
@@ -129,11 +128,10 @@ function drawChart16(data) {
           },
           callbacks: {
             label: function (value, context) {
-              return `${value.label}: ${value.raw} (${
-                Math.round(
-                  ((value.raw / total16) * 100 + Number.EPSILON) * 100
-                ) / 100
-              })%`;
+              return `${value.label}: ${value.raw} (${Math.round(
+                ((value.raw / total16) * 100 + Number.EPSILON) * 100
+              ) / 100
+                })%`;
             },
           },
         },

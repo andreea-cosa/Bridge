@@ -4,38 +4,38 @@ function drawChart31(data) {
   data.forEach((d) => {
     if (
       d[
-        "Do you have a liquidated damages clause that allows you to recoup immigration fees when an employee leaves your company within a specific time period?"
+      "Do you have a liquidated damages clause that allows you to recoup immigration fees when an employee leaves your company within a specific time period?"
       ] != "" &&
       optionsObj31[
-        d[
-          "Do you have a liquidated damages clause that allows you to recoup immigration fees when an employee leaves your company within a specific time period?"
-        ]
+      d[
+      "Do you have a liquidated damages clause that allows you to recoup immigration fees when an employee leaves your company within a specific time period?"
+      ]
       ] == undefined
     ) {
       optionsObj31[
         d[
-          "Do you have a liquidated damages clause that allows you to recoup immigration fees when an employee leaves your company within a specific time period?"
+        "Do you have a liquidated damages clause that allows you to recoup immigration fees when an employee leaves your company within a specific time period?"
         ]
       ] = 1;
     } else if (
       d[
-        "Do you have a liquidated damages clause that allows you to recoup immigration fees when an employee leaves your company within a specific time period?"
+      "Do you have a liquidated damages clause that allows you to recoup immigration fees when an employee leaves your company within a specific time period?"
       ] != "" &&
       optionsObj31[
-        d[
-          "Do you have a liquidated damages clause that allows you to recoup immigration fees when an employee leaves your company within a specific time period?"
-        ]
+      d[
+      "Do you have a liquidated damages clause that allows you to recoup immigration fees when an employee leaves your company within a specific time period?"
+      ]
       ] != undefined
     ) {
       optionsObj31[
         d[
-          "Do you have a liquidated damages clause that allows you to recoup immigration fees when an employee leaves your company within a specific time period?"
+        "Do you have a liquidated damages clause that allows you to recoup immigration fees when an employee leaves your company within a specific time period?"
         ]
       ] =
         optionsObj31[
-          d[
-            "Do you have a liquidated damages clause that allows you to recoup immigration fees when an employee leaves your company within a specific time period?"
-          ]
+        d[
+        "Do you have a liquidated damages clause that allows you to recoup immigration fees when an employee leaves your company within a specific time period?"
+        ]
         ] + 1;
     }
   });
@@ -83,7 +83,7 @@ function drawChart31(data) {
       },
       responsive: true,
       maintainAspectRatio: true,
-      aspectRatio: 1,
+      aspectRatio: 0.7,
       layout: {
         padding: {
           top: 40,
@@ -113,10 +113,9 @@ function drawChart31(data) {
                 return (
                   ctx31.chart.data.labels[ctx31.dataIndex] +
                   " " +
-                  `${
-                    Math.round(
-                      ((value / total31) * 100 + Number.EPSILON) * 100
-                    ) / 100
+                  `${Math.round(
+                    ((value / total31) * 100 + Number.EPSILON) * 100
+                  ) / 100
                   }%`
                 );
               },
@@ -137,11 +136,10 @@ function drawChart31(data) {
           },
           callbacks: {
             label: function (value, context) {
-              return `${value.label}: ${value.raw} (${
-                Math.round(
-                  ((value.raw / total31) * 100 + Number.EPSILON) * 100
-                ) / 100
-              })%`;
+              return `${value.label}: ${value.raw} (${Math.round(
+                ((value.raw / total31) * 100 + Number.EPSILON) * 100
+              ) / 100
+                })%`;
             },
           },
         },

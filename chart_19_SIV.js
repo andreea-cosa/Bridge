@@ -4,38 +4,38 @@ function drawChart19(data) {
   data.forEach((d) => {
     if (
       d[
-        "For PERM-based Green Cards, the employer is required to cover the cost of the PERM but either the employer or employee can cover the cost of the I-140 and I-485 processes. What portion of I-140 costs do you cover?"
+      "For PERM-based Green Cards, the employer is required to cover the cost of the PERM but either the employer or employee can cover the cost of the I-140 and I-485 processes. What portion of I-140 costs do you cover?"
       ] != "" &&
       optionsObj19[
-        d[
-          "For PERM-based Green Cards, the employer is required to cover the cost of the PERM but either the employer or employee can cover the cost of the I-140 and I-485 processes. What portion of I-140 costs do you cover?"
-        ]
+      d[
+      "For PERM-based Green Cards, the employer is required to cover the cost of the PERM but either the employer or employee can cover the cost of the I-140 and I-485 processes. What portion of I-140 costs do you cover?"
+      ]
       ] == undefined
     ) {
       optionsObj19[
         d[
-          "For PERM-based Green Cards, the employer is required to cover the cost of the PERM but either the employer or employee can cover the cost of the I-140 and I-485 processes. What portion of I-140 costs do you cover?"
+        "For PERM-based Green Cards, the employer is required to cover the cost of the PERM but either the employer or employee can cover the cost of the I-140 and I-485 processes. What portion of I-140 costs do you cover?"
         ]
       ] = 1;
     } else if (
       d[
-        "For PERM-based Green Cards, the employer is required to cover the cost of the PERM but either the employer or employee can cover the cost of the I-140 and I-485 processes. What portion of I-140 costs do you cover?"
+      "For PERM-based Green Cards, the employer is required to cover the cost of the PERM but either the employer or employee can cover the cost of the I-140 and I-485 processes. What portion of I-140 costs do you cover?"
       ] != "" &&
       optionsObj19[
-        d[
-          "For PERM-based Green Cards, the employer is required to cover the cost of the PERM but either the employer or employee can cover the cost of the I-140 and I-485 processes. What portion of I-140 costs do you cover?"
-        ]
+      d[
+      "For PERM-based Green Cards, the employer is required to cover the cost of the PERM but either the employer or employee can cover the cost of the I-140 and I-485 processes. What portion of I-140 costs do you cover?"
+      ]
       ] != undefined
     ) {
       optionsObj19[
         d[
-          "For PERM-based Green Cards, the employer is required to cover the cost of the PERM but either the employer or employee can cover the cost of the I-140 and I-485 processes. What portion of I-140 costs do you cover?"
+        "For PERM-based Green Cards, the employer is required to cover the cost of the PERM but either the employer or employee can cover the cost of the I-140 and I-485 processes. What portion of I-140 costs do you cover?"
         ]
       ] =
         optionsObj19[
-          d[
-            "For PERM-based Green Cards, the employer is required to cover the cost of the PERM but either the employer or employee can cover the cost of the I-140 and I-485 processes. What portion of I-140 costs do you cover?"
-          ]
+        d[
+        "For PERM-based Green Cards, the employer is required to cover the cost of the PERM but either the employer or employee can cover the cost of the I-140 and I-485 processes. What portion of I-140 costs do you cover?"
+        ]
         ] + 1;
     }
   });
@@ -81,7 +81,7 @@ function drawChart19(data) {
       },
       responsive: true,
       maintainAspectRatio: true,
-      aspectRatio: 1,
+      aspectRatio: 0.7,
       layout: {
         padding: {
           top: 40,
@@ -111,10 +111,9 @@ function drawChart19(data) {
                 return (
                   ctx19.chart.data.labels[ctx19.dataIndex] +
                   " " +
-                  `${
-                    Math.round(
-                      ((value / total19) * 100 + Number.EPSILON) * 100
-                    ) / 100
+                  `${Math.round(
+                    ((value / total19) * 100 + Number.EPSILON) * 100
+                  ) / 100
                   }%`
                 );
               },
@@ -135,11 +134,10 @@ function drawChart19(data) {
           },
           callbacks: {
             label: function (value, context) {
-              return `${value.label}: ${value.raw} (${
-                Math.round(
-                  ((value.raw / total19) * 100 + Number.EPSILON) * 100
-                ) / 100
-              })%`;
+              return `${value.label}: ${value.raw} (${Math.round(
+                ((value.raw / total19) * 100 + Number.EPSILON) * 100
+              ) / 100
+                })%`;
             },
           },
         },

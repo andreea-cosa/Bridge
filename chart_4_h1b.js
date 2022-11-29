@@ -4,38 +4,38 @@ function drawChart4(data) {
   data.forEach((d) => {
     if (
       d[
-        "When are employees eligible to start with your company after an H-1B transfer has been filed?"
+      "When are employees eligible to start with your company after an H-1B transfer has been filed?"
       ] != "" &&
       optionsObj4[
-        d[
-          "When are employees eligible to start with your company after an H-1B transfer has been filed?"
-        ]
+      d[
+      "When are employees eligible to start with your company after an H-1B transfer has been filed?"
+      ]
       ] == undefined
     ) {
       optionsObj4[
         d[
-          "When are employees eligible to start with your company after an H-1B transfer has been filed?"
+        "When are employees eligible to start with your company after an H-1B transfer has been filed?"
         ]
       ] = 1;
     } else if (
       d[
-        "When are employees eligible to start with your company after an H-1B transfer has been filed?"
+      "When are employees eligible to start with your company after an H-1B transfer has been filed?"
       ] != "" &&
       optionsObj4[
-        d[
-          "When are employees eligible to start with your company after an H-1B transfer has been filed?"
-        ]
+      d[
+      "When are employees eligible to start with your company after an H-1B transfer has been filed?"
+      ]
       ] != undefined
     ) {
       optionsObj4[
         d[
-          "When are employees eligible to start with your company after an H-1B transfer has been filed?"
+        "When are employees eligible to start with your company after an H-1B transfer has been filed?"
         ]
       ] =
         optionsObj4[
-          d[
-            "When are employees eligible to start with your company after an H-1B transfer has been filed?"
-          ]
+        d[
+        "When are employees eligible to start with your company after an H-1B transfer has been filed?"
+        ]
         ] + 1;
     }
   });
@@ -75,7 +75,7 @@ function drawChart4(data) {
       },
       responsive: true,
       maintainAspectRatio: true,
-      aspectRatio: 1,
+      aspectRatio: 0.7,
       layout: {
         padding: {
           top: 40,
@@ -104,14 +104,13 @@ function drawChart4(data) {
               formatter: function (value, ctx4) {
                 return ctx4.chart.data.labels[ctx4.dataIndex].length > 25
                   ? ctx4.chart.data.labels[ctx4.dataIndex].substring(0, 25) +
-                      "..."
+                  "..."
                   : ctx4.chart.data.labels[ctx4.dataIndex] +
-                      " " +
-                      `${
-                        Math.round(
-                          ((value / total4) * 100 + Number.EPSILON) * 100
-                        ) / 100
-                      }%`;
+                  " " +
+                  `${Math.round(
+                    ((value / total4) * 100 + Number.EPSILON) * 100
+                  ) / 100
+                  }%`;
               },
               offset: 3,
             },
@@ -130,11 +129,10 @@ function drawChart4(data) {
           },
           callbacks: {
             label: function (value, context) {
-              return `${value.label}: ${value.raw} (${
-                Math.round(
-                  ((value.raw / total4) * 100 + Number.EPSILON) * 100
-                ) / 100
-              })%`;
+              return `${value.label}: ${value.raw} (${Math.round(
+                ((value.raw / total4) * 100 + Number.EPSILON) * 100
+              ) / 100
+                })%`;
             },
           },
         },

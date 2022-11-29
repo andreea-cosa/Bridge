@@ -5,7 +5,7 @@ function drawChart9(data) {
     if (
       d["Are L-1 employees eligible for H-1B lottery sponsorship?"] != "" &&
       optionsObj9[
-        d["Are L-1 employees eligible for H-1B lottery sponsorship?"]
+      d["Are L-1 employees eligible for H-1B lottery sponsorship?"]
       ] == undefined
     ) {
       optionsObj9[
@@ -14,14 +14,14 @@ function drawChart9(data) {
     } else if (
       d["Are L-1 employees eligible for H-1B lottery sponsorship?"] != "" &&
       optionsObj9[
-        d["Are L-1 employees eligible for H-1B lottery sponsorship?"]
+      d["Are L-1 employees eligible for H-1B lottery sponsorship?"]
       ] != undefined
     ) {
       optionsObj9[
         d["Are L-1 employees eligible for H-1B lottery sponsorship?"]
       ] =
         optionsObj9[
-          d["Are L-1 employees eligible for H-1B lottery sponsorship?"]
+        d["Are L-1 employees eligible for H-1B lottery sponsorship?"]
         ] + 1;
     }
   });
@@ -61,7 +61,7 @@ function drawChart9(data) {
       },
       responsive: true,
       maintainAspectRatio: true,
-      aspectRatio: 1,
+      aspectRatio: 0.7,
       layout: {
         padding: {
           top: 40,
@@ -91,10 +91,9 @@ function drawChart9(data) {
                 return (
                   ctx9.chart.data.labels[ctx9.dataIndex] +
                   " " +
-                  `${
-                    Math.round(
-                      ((value / total9) * 100 + Number.EPSILON) * 100
-                    ) / 100
+                  `${Math.round(
+                    ((value / total9) * 100 + Number.EPSILON) * 100
+                  ) / 100
                   }%`
                 );
               },
@@ -115,11 +114,10 @@ function drawChart9(data) {
           },
           callbacks: {
             label: function (value, context) {
-              return `${value.label}: ${value.raw} (${
-                Math.round(
-                  ((value.raw / total9) * 100 + Number.EPSILON) * 100
-                ) / 100
-              })%`;
+              return `${value.label}: ${value.raw} (${Math.round(
+                ((value.raw / total9) * 100 + Number.EPSILON) * 100
+              ) / 100
+                })%`;
             },
           },
         },

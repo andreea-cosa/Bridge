@@ -5,7 +5,7 @@ function drawChart10(data) {
     if (
       d["Are L-1 employees eligible for Green Card sponsorship?"] != "" &&
       optionsObj10[
-        d["Are L-1 employees eligible for Green Card sponsorship?"]
+      d["Are L-1 employees eligible for Green Card sponsorship?"]
       ] == undefined
     ) {
       optionsObj10[
@@ -14,14 +14,14 @@ function drawChart10(data) {
     } else if (
       d["Are L-1 employees eligible for Green Card sponsorship?"] != "" &&
       optionsObj10[
-        d["Are L-1 employees eligible for Green Card sponsorship?"]
+      d["Are L-1 employees eligible for Green Card sponsorship?"]
       ] != undefined
     ) {
       optionsObj10[
         d["Are L-1 employees eligible for Green Card sponsorship?"]
       ] =
         optionsObj10[
-          d["Are L-1 employees eligible for Green Card sponsorship?"]
+        d["Are L-1 employees eligible for Green Card sponsorship?"]
         ] + 1;
     }
   });
@@ -61,7 +61,7 @@ function drawChart10(data) {
       },
       responsive: true,
       maintainAspectRatio: true,
-      aspectRatio: 1,
+      aspectRatio: 0.7,
       layout: {
         padding: {
           top: 40,
@@ -91,10 +91,9 @@ function drawChart10(data) {
                 return (
                   ctx10.chart.data.labels[ctx10.dataIndex] +
                   " " +
-                  `${
-                    Math.round(
-                      ((value / total10) * 100 + Number.EPSILON) * 100
-                    ) / 100
+                  `${Math.round(
+                    ((value / total10) * 100 + Number.EPSILON) * 100
+                  ) / 100
                   }%`
                 );
               },
@@ -115,11 +114,10 @@ function drawChart10(data) {
           },
           callbacks: {
             label: function (value, context) {
-              return `${value.label}: ${value.raw} (${
-                Math.round(
-                  ((value.raw / total10) * 100 + Number.EPSILON) * 100
-                ) / 100
-              })%`;
+              return `${value.label}: ${value.raw} (${Math.round(
+                ((value.raw / total10) * 100 + Number.EPSILON) * 100
+              ) / 100
+                })%`;
             },
           },
         },

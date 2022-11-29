@@ -4,38 +4,38 @@ function drawChart2(data) {
   data.forEach((d) => {
     if (
       d[
-        "Do you require that the H-1B candidate has a minimum amount of time remaining in their overall 6-year maximum for them to be eligible for hire?"
+      "Do you require that the H-1B candidate has a minimum amount of time remaining in their overall 6-year maximum for them to be eligible for hire?"
       ] != "" &&
       optionsObj2[
-        d[
-          "Do you require that the H-1B candidate has a minimum amount of time remaining in their overall 6-year maximum for them to be eligible for hire?"
-        ]
+      d[
+      "Do you require that the H-1B candidate has a minimum amount of time remaining in their overall 6-year maximum for them to be eligible for hire?"
+      ]
       ] == undefined
     ) {
       optionsObj2[
         d[
-          "Do you require that the H-1B candidate has a minimum amount of time remaining in their overall 6-year maximum for them to be eligible for hire?"
+        "Do you require that the H-1B candidate has a minimum amount of time remaining in their overall 6-year maximum for them to be eligible for hire?"
         ]
       ] = 1;
     } else if (
       d[
-        "Do you require that the H-1B candidate has a minimum amount of time remaining in their overall 6-year maximum for them to be eligible for hire?"
+      "Do you require that the H-1B candidate has a minimum amount of time remaining in their overall 6-year maximum for them to be eligible for hire?"
       ] != "" &&
       optionsObj2[
-        d[
-          "Do you require that the H-1B candidate has a minimum amount of time remaining in their overall 6-year maximum for them to be eligible for hire?"
-        ]
+      d[
+      "Do you require that the H-1B candidate has a minimum amount of time remaining in their overall 6-year maximum for them to be eligible for hire?"
+      ]
       ] != undefined
     ) {
       optionsObj2[
         d[
-          "Do you require that the H-1B candidate has a minimum amount of time remaining in their overall 6-year maximum for them to be eligible for hire?"
+        "Do you require that the H-1B candidate has a minimum amount of time remaining in their overall 6-year maximum for them to be eligible for hire?"
         ]
       ] =
         optionsObj2[
-          d[
-            "Do you require that the H-1B candidate has a minimum amount of time remaining in their overall 6-year maximum for them to be eligible for hire?"
-          ]
+        d[
+        "Do you require that the H-1B candidate has a minimum amount of time remaining in their overall 6-year maximum for them to be eligible for hire?"
+        ]
         ] + 1;
     }
   });
@@ -75,7 +75,7 @@ function drawChart2(data) {
       },
       responsive: true,
       maintainAspectRatio: true,
-      aspectRatio: 1,
+      aspectRatio: 0.7,
       layout: {
         padding: {
           top: 40,
@@ -105,10 +105,9 @@ function drawChart2(data) {
                 return (
                   ctx2.chart.data.labels[ctx2.dataIndex] +
                   " " +
-                  `${
-                    Math.round(
-                      ((value / total2) * 100 + Number.EPSILON) * 100
-                    ) / 100
+                  `${Math.round(
+                    ((value / total2) * 100 + Number.EPSILON) * 100
+                  ) / 100
                   }%`
                 );
               },
@@ -129,11 +128,10 @@ function drawChart2(data) {
           },
           callbacks: {
             label: function (value, context) {
-              return `${value.label}: ${value.raw} (${
-                Math.round(
-                  ((value.raw / total2) * 100 + Number.EPSILON) * 100
-                ) / 100
-              })%`;
+              return `${value.label}: ${value.raw} (${Math.round(
+                ((value.raw / total2) * 100 + Number.EPSILON) * 100
+              ) / 100
+                })%`;
             },
           },
         },

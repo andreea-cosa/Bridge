@@ -4,13 +4,13 @@ function drawChart32(data) {
     if (
       d["Tenure of liquidated damages clause (modified) "] != "" &&
       optionsObj32[d["Tenure of liquidated damages clause (modified) "]] ==
-        undefined
+      undefined
     ) {
       optionsObj32[d["Tenure of liquidated damages clause (modified) "]] = 1;
     } else if (
       d["Tenure of liquidated damages clause (modified) "] != "" &&
       optionsObj32[d["Tenure of liquidated damages clause (modified) "]] !=
-        undefined
+      undefined
     ) {
       optionsObj32[d["Tenure of liquidated damages clause (modified) "]] =
         optionsObj32[d["Tenure of liquidated damages clause (modified) "]] + 1;
@@ -63,7 +63,7 @@ function drawChart32(data) {
       },
       responsive: true,
       maintainAspectRatio: true,
-      aspectRatio: 1,
+      aspectRatio: 0.7,
       layout: {
         padding: {
           top: 40,
@@ -93,11 +93,10 @@ function drawChart32(data) {
           },
           callbacks: {
             label: function (value, context) {
-              return `${value.label}: ${value.raw} (${
-                Math.round(
-                  ((value.raw / total32) * 100 + Number.EPSILON) * 100
-                ) / 100
-              })%`;
+              return `${value.label}: ${value.raw} (${Math.round(
+                ((value.raw / total32) * 100 + Number.EPSILON) * 100
+              ) / 100
+                })%`;
             },
           },
         },

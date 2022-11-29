@@ -4,38 +4,38 @@ function drawChart29(data) {
   data.forEach((d) => {
     if (
       d[
-        "What portion of consular processing costs do you cover when an employee goes abroad to obtain a visa stamp?"
+      "What portion of consular processing costs do you cover when an employee goes abroad to obtain a visa stamp?"
       ] != "" &&
       optionsObj29[
-        d[
-          "What portion of consular processing costs do you cover when an employee goes abroad to obtain a visa stamp?"
-        ]
+      d[
+      "What portion of consular processing costs do you cover when an employee goes abroad to obtain a visa stamp?"
+      ]
       ] == undefined
     ) {
       optionsObj29[
         d[
-          "What portion of consular processing costs do you cover when an employee goes abroad to obtain a visa stamp?"
+        "What portion of consular processing costs do you cover when an employee goes abroad to obtain a visa stamp?"
         ]
       ] = 1;
     } else if (
       d[
-        "What portion of consular processing costs do you cover when an employee goes abroad to obtain a visa stamp?"
+      "What portion of consular processing costs do you cover when an employee goes abroad to obtain a visa stamp?"
       ] != "" &&
       optionsObj29[
-        d[
-          "What portion of consular processing costs do you cover when an employee goes abroad to obtain a visa stamp?"
-        ]
+      d[
+      "What portion of consular processing costs do you cover when an employee goes abroad to obtain a visa stamp?"
+      ]
       ] != undefined
     ) {
       optionsObj29[
         d[
-          "What portion of consular processing costs do you cover when an employee goes abroad to obtain a visa stamp?"
+        "What portion of consular processing costs do you cover when an employee goes abroad to obtain a visa stamp?"
         ]
       ] =
         optionsObj29[
-          d[
-            "What portion of consular processing costs do you cover when an employee goes abroad to obtain a visa stamp?"
-          ]
+        d[
+        "What portion of consular processing costs do you cover when an employee goes abroad to obtain a visa stamp?"
+        ]
         ] + 1;
     }
   });
@@ -83,7 +83,7 @@ function drawChart29(data) {
       },
       responsive: true,
       maintainAspectRatio: true,
-      aspectRatio: 1,
+      aspectRatio: 0.7,
       layout: {
         padding: {
           top: 40,
@@ -113,10 +113,9 @@ function drawChart29(data) {
                 return (
                   ctx29.chart.data.labels[ctx29.dataIndex] +
                   " " +
-                  `${
-                    Math.round(
-                      ((value / total28) * 100 + Number.EPSILON) * 100
-                    ) / 100
+                  `${Math.round(
+                    ((value / total28) * 100 + Number.EPSILON) * 100
+                  ) / 100
                   }%`
                 );
               },
@@ -137,11 +136,10 @@ function drawChart29(data) {
           },
           callbacks: {
             label: function (value, context) {
-              return `${value.label}: ${value.raw} (${
-                Math.round(
-                  ((value.raw / total28) * 100 + Number.EPSILON) * 100
-                ) / 100
-              })%`;
+              return `${value.label}: ${value.raw} (${Math.round(
+                ((value.raw / total28) * 100 + Number.EPSILON) * 100
+              ) / 100
+                })%`;
             },
           },
         },

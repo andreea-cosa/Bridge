@@ -4,38 +4,38 @@ function drawChart22(data) {
   data.forEach((d) => {
     if (
       d[
-        "Do you limit which occupations/jobs you are willing to sponsor for a non-immigrant visa?"
+      "Do you limit which occupations/jobs you are willing to sponsor for a non-immigrant visa?"
       ] != "" &&
       optionsObj22[
-        d[
-          "Do you limit which occupations/jobs you are willing to sponsor for a non-immigrant visa?"
-        ]
+      d[
+      "Do you limit which occupations/jobs you are willing to sponsor for a non-immigrant visa?"
+      ]
       ] == undefined
     ) {
       optionsObj22[
         d[
-          "Do you limit which occupations/jobs you are willing to sponsor for a non-immigrant visa?"
+        "Do you limit which occupations/jobs you are willing to sponsor for a non-immigrant visa?"
         ]
       ] = 1;
     } else if (
       d[
-        "Do you limit which occupations/jobs you are willing to sponsor for a non-immigrant visa?"
+      "Do you limit which occupations/jobs you are willing to sponsor for a non-immigrant visa?"
       ] != "" &&
       optionsObj22[
-        d[
-          "Do you limit which occupations/jobs you are willing to sponsor for a non-immigrant visa?"
-        ]
+      d[
+      "Do you limit which occupations/jobs you are willing to sponsor for a non-immigrant visa?"
+      ]
       ] != undefined
     ) {
       optionsObj22[
         d[
-          "Do you limit which occupations/jobs you are willing to sponsor for a non-immigrant visa?"
+        "Do you limit which occupations/jobs you are willing to sponsor for a non-immigrant visa?"
         ]
       ] =
         optionsObj22[
-          d[
-            "Do you limit which occupations/jobs you are willing to sponsor for a non-immigrant visa?"
-          ]
+        d[
+        "Do you limit which occupations/jobs you are willing to sponsor for a non-immigrant visa?"
+        ]
         ] + 1;
     }
   });
@@ -81,7 +81,7 @@ function drawChart22(data) {
       },
       responsive: true,
       maintainAspectRatio: true,
-      aspectRatio: 1,
+      aspectRatio: 0.7,
       layout: {
         padding: {
           top: 40,
@@ -111,10 +111,9 @@ function drawChart22(data) {
                 return (
                   ctx22.chart.data.labels[ctx22.dataIndex] +
                   " " +
-                  `${
-                    Math.round(
-                      ((value / total22) * 100 + Number.EPSILON) * 100
-                    ) / 100
+                  `${Math.round(
+                    ((value / total22) * 100 + Number.EPSILON) * 100
+                  ) / 100
                   }%`
                 );
               },
@@ -135,11 +134,10 @@ function drawChart22(data) {
           },
           callbacks: {
             label: function (value, context) {
-              return `${value.label}: ${value.raw} (${
-                Math.round(
-                  ((value.raw / total22) * 100 + Number.EPSILON) * 100
-                ) / 100
-              })%`;
+              return `${value.label}: ${value.raw} (${Math.round(
+                ((value.raw / total22) * 100 + Number.EPSILON) * 100
+              ) / 100
+                })%`;
             },
           },
         },
