@@ -41,14 +41,14 @@ function drawChart29(data) {
   });
 
   let pieData28 = [];
-  let total28 = 0;
+  let total29 = 0;
 
   Object.keys(optionsObj29)
     .sort()
     .reverse()
     .forEach((k) => {
       pieData28.push(optionsObj29[k]);
-      total28 = total28 + optionsObj29[k];
+      total29 = total29 + optionsObj29[k];
     });
 
   Chart.register(ChartDataLabels); //register data labels plugin
@@ -86,7 +86,7 @@ function drawChart29(data) {
       aspectRatio: getAspectRatio(),
       layout: {
         padding: {
-          top: 40,
+          top: 11,
         },
       },
       plugins: {
@@ -114,7 +114,7 @@ function drawChart29(data) {
                   ctx29.chart.data.labels[ctx29.dataIndex] +
                   " " +
                   `${Math.round(
-                    ((value / total28) * 100 + Number.EPSILON) * 100
+                    ((value / total29) * 100 + Number.EPSILON) * 100
                   ) / 100
                   }%`
                 );
@@ -124,23 +124,24 @@ function drawChart29(data) {
           },
         },
         tooltip: {
-          titleMarginBottom: 20,
-          caretPadding: 10,
-          padding: 20,
-          displayColors: false,
-          titleFont: {
-            size: 20,
-          },
-          bodyFont: {
-            size: 16,
-          },
-          callbacks: {
-            label: function (value, context) {
-              return `${value.label}: ${value.raw} (${Math.round(
-                ((value.raw / total28) * 100 + Number.EPSILON) * 100
-              ) / 100
-                })%`;
-            },
+          // displayColors: false,
+
+          // bodyFont: {
+          //   size: 14,
+          // },
+          // callbacks: {
+          //   label: function (value, context) {
+          //     return `${value.label}: ${value.raw} (${
+          //       Math.round(
+          //         ((value.raw / total29) * 100 + Number.EPSILON) * 100
+          //       ) / 100
+          //     })%`;
+          //   },
+          // },
+          enabled: false,
+          position: "nearest",
+          external: function (context) {
+            externalTooltipHandler(context, total29);
           },
         },
         legend: {
@@ -148,6 +149,8 @@ function drawChart29(data) {
           position: "bottom",
           labels: {
             padding: 25,
+            usePointStyle: true,
+            boxWidth: 7,
           },
         },
       },

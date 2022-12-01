@@ -1,3 +1,5 @@
+let total1 = 0;
+
 function drawChart1(data) {
   let optionsObj1 = {};
 
@@ -5,13 +7,13 @@ function drawChart1(data) {
     if (
       d["Does your company hire candidates on H-1B visas?"] != "" &&
       optionsObj1[d["Does your company hire candidates on H-1B visas?"]] ==
-      undefined
+        undefined
     ) {
       optionsObj1[d["Does your company hire candidates on H-1B visas?"]] = 1;
     } else if (
       d["Does your company hire candidates on H-1B visas?"] != "" &&
       optionsObj1[d["Does your company hire candidates on H-1B visas?"]] !=
-      undefined
+        undefined
     ) {
       optionsObj1[d["Does your company hire candidates on H-1B visas?"]] =
         optionsObj1[d["Does your company hire candidates on H-1B visas?"]] + 1;
@@ -19,7 +21,6 @@ function drawChart1(data) {
   });
 
   let pieData1 = [];
-  let total1 = 0;
 
   Object.keys(optionsObj1)
     .sort()
@@ -53,10 +54,10 @@ function drawChart1(data) {
       },
       responsive: true,
       maintainAspectRatio: true,
-      aspectRatio: getAspectRatio(),
+
       layout: {
         padding: {
-          top: 40,
+          top: 11,
         },
       },
       plugins: {
@@ -83,9 +84,10 @@ function drawChart1(data) {
                 return (
                   ctx1.chart.data.labels[ctx1.dataIndex] +
                   " " +
-                  `${Math.round(
-                    ((value / total1) * 100 + Number.EPSILON) * 100
-                  ) / 100
+                  `${
+                    Math.round(
+                      ((value / total1) * 100 + Number.EPSILON) * 100
+                    ) / 100
                   }%`
                 );
               },
@@ -94,23 +96,23 @@ function drawChart1(data) {
           },
         },
         tooltip: {
-          titleMarginBottom: 20,
-          caretPadding: 10,
-          padding: 20,
-          displayColors: false,
-          titleFont: {
-            size: 20,
-          },
-          bodyFont: {
-            size: 16,
-          },
-          callbacks: {
-            label: function (value, context) {
-              return `${value.label}: ${value.raw} (${Math.round(
-                ((value.raw / total1) * 100 + Number.EPSILON) * 100
-              ) / 100
-                })%`;
-            },
+          // displayColors: false,
+          // bodyFont: {
+          //   size: 14,
+          // },
+          // callbacks: {
+          //   label: function (value, context) {
+          //     return `${value.label}: ${value.raw} (${
+          //       Math.round(
+          //         ((value.raw / total1) * 100 + Number.EPSILON) * 100
+          //       ) / 100
+          //     })%`;
+          //   },
+          // },
+          enabled: false,
+          position: "nearest",
+          external: function (context) {
+            externalTooltipHandler(context, total1);
           },
         },
         legend: {
@@ -118,6 +120,8 @@ function drawChart1(data) {
           position: "bottom",
           labels: {
             padding: 21,
+            usePointStyle: true,
+            boxWidth: 7,
           },
         },
       },

@@ -72,7 +72,7 @@ function drawChart34(data) {
       aspectRatio: getAspectRatio(),
       layout: {
         padding: {
-          top: 40,
+          top: 11,
         },
       },
       plugins: {
@@ -111,30 +111,42 @@ function drawChart34(data) {
           },
         },
         tooltip: {
-          titleMarginBottom: 20,
-          caretPadding: 10,
-          padding: 20,
-          displayColors: false,
-          titleFont: {
-            size: 20,
-          },
-          bodyFont: {
-            size: 16,
-          },
-          callbacks: {
-            label: function (value, context) {
-              return `${value.label}: ${value.raw} (${Math.round(
-                ((value.raw / total34) * 100 + Number.EPSILON) * 100
-              ) / 100
-                })%`;
-            },
+          // displayColors: false,
+
+          // bodyFont: {
+          //   size: 14,
+          // },
+          // callbacks: {
+          //   label: function (value, context) {
+          //     return `${value.label}: ${value.raw} (${
+          //       Math.round(
+          //         ((value.raw / total34) * 100 + Number.EPSILON) * 100
+          //       ) / 100
+          //     })%`;
+          //   },
+          // },
+          enabled: false,
+          position: "nearest",
+          external: function (context) {
+            externalTooltipHandler(context, total34);
           },
         },
         legend: {
           display: true,
           position: "bottom",
           labels: {
+            generateLabels: (chart) =>
+              chart.data.labels.map((l, i) => ({
+                datasetIndex: 0,
+                index: i,
+                text: l.length > 35 ? l.substring(0, 38) : l,
+                fillStyle: chart.data.datasets[0].backgroundColor[i],
+                strokeStyle: chart.data.datasets[0].backgroundColor[i],
+                hidden: false,
+              })),
             padding: 25,
+            usePointStyle: true,
+            boxWidth: 7,
           },
         },
       },

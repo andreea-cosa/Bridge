@@ -64,7 +64,7 @@ function drawChart9(data) {
       aspectRatio: getAspectRatio(),
       layout: {
         padding: {
-          top: 40,
+          top: 11,
         },
       },
       plugins: {
@@ -102,23 +102,23 @@ function drawChart9(data) {
           },
         },
         tooltip: {
-          titleMarginBottom: 20,
-          caretPadding: 10,
-          padding: 20,
-          displayColors: false,
-          titleFont: {
-            size: 20,
-          },
-          bodyFont: {
-            size: 16,
-          },
-          callbacks: {
-            label: function (value, context) {
-              return `${value.label}: ${value.raw} (${Math.round(
-                ((value.raw / total9) * 100 + Number.EPSILON) * 100
-              ) / 100
-                })%`;
-            },
+          // displayColors: false,
+          // bodyFont: {
+          //   size: 14,
+          // },
+          // callbacks: {
+          //   label: function (value, context) {
+          //     return `${value.label}: ${value.raw} (${
+          //       Math.round(
+          //         ((value.raw / total9) * 100 + Number.EPSILON) * 100
+          //       ) / 100
+          //     })%`;
+          //   },
+          // },
+          enabled: false,
+          position: "nearest",
+          external: function (context) {
+            externalTooltipHandler(context, total9);
           },
         },
         legend: {
@@ -126,6 +126,8 @@ function drawChart9(data) {
           position: "bottom",
           labels: {
             padding: 25,
+            usePointStyle: true,
+            boxWidth: 7,
           },
         },
       },
