@@ -1,3 +1,67 @@
+const htmlLegendPlugin_chart_3_h1b = {
+  id: "chart_3_h1b_legends",
+  afterUpdate(chart, args, options) {
+    const ul = getOrCreateLegendList(chart, "chart_3_h1b_legends");
+
+    // Remove old legend items
+    while (ul.firstChild) {
+      ul.firstChild.remove();
+    }
+
+    // Reuse the built-in legendItems generator
+    const items = chart.options.plugins.legend.labels.generateLabels(chart);
+
+    items.forEach((item) => {
+      const li = document.createElement("li");
+      li.style.alignItems = "center";
+      li.style.cursor = "pointer";
+      li.style.display = "flex";
+      li.style.flexDirection = "row";
+      li.style.marginLeft = "10px";
+      // li.style.borderRadius = "15px";
+
+      li.onclick = () => {
+        const { type } = chart.config;
+        if (type === "pie" || type === "doughnut") {
+          // Pie and doughnut charts only have a single dataset and visibility is per item
+          chart.toggleDataVisibility(item.index);
+        } else {
+          chart.setDatasetVisibility(
+            item.datasetIndex,
+            !chart.isDatasetVisible(item.datasetIndex)
+          );
+        }
+        chart.update();
+      };
+
+      // Color box
+      const boxSpan = document.createElement("span");
+      boxSpan.style.background = item.fillStyle;
+      boxSpan.style.borderColor = item.strokeStyle;
+      boxSpan.style.borderWidth = item.lineWidth + "px";
+      boxSpan.style.display = "inline-block";
+      boxSpan.style.height = "20px";
+      boxSpan.style.marginRight = "10px";
+      boxSpan.style.width = "20px";
+      boxSpan.style.borderRadius = "40px";
+
+      // Text
+      const textContainer = document.createElement("p");
+      textContainer.style.color = item.fontColor;
+      textContainer.style.margin = 0;
+      textContainer.style.padding = 0;
+      textContainer.style.textDecoration = item.hidden ? "line-through" : "";
+
+      const text = document.createTextNode(item.text);
+      textContainer.appendChild(text);
+
+      li.appendChild(boxSpan);
+      li.appendChild(textContainer);
+      ul.appendChild(li);
+    });
+  },
+};
+
 function drawChart3(data) {
   let optionsObj3 = {};
 
@@ -5,7 +69,7 @@ function drawChart3(data) {
     if (
       d["Are H-1B employees eligible for Green Card sponsorship?"] != "" &&
       optionsObj3[
-      d["Are H-1B employees eligible for Green Card sponsorship?"]
+        d["Are H-1B employees eligible for Green Card sponsorship?"]
       ] == undefined
     ) {
       optionsObj3[
@@ -14,14 +78,14 @@ function drawChart3(data) {
     } else if (
       d["Are H-1B employees eligible for Green Card sponsorship?"] != "" &&
       optionsObj3[
-      d["Are H-1B employees eligible for Green Card sponsorship?"]
+        d["Are H-1B employees eligible for Green Card sponsorship?"]
       ] != undefined
     ) {
       optionsObj3[
         d["Are H-1B employees eligible for Green Card sponsorship?"]
       ] =
         optionsObj3[
-        d["Are H-1B employees eligible for Green Card sponsorship?"]
+          d["Are H-1B employees eligible for Green Card sponsorship?"]
         ] + 1;
     }
   });
@@ -61,7 +125,7 @@ function drawChart3(data) {
       },
       responsive: true,
       maintainAspectRatio: true,
-      aspectRatio: getAspectRatio(),
+      aspectRatio: 1,
       layout: {
         padding: {
           top: 11,
@@ -91,9 +155,10 @@ function drawChart3(data) {
                 return (
                   ctx3.chart.data.labels[ctx3.dataIndex] +
                   " " +
-                  `${Math.round(
-                    ((value / total3) * 100 + Number.EPSILON) * 100
-                  ) / 100
+                  `${
+                    Math.round(
+                      ((value / total3) * 100 + Number.EPSILON) * 100
+                    ) / 100
                   }%`
                 );
               },
@@ -122,8 +187,8 @@ function drawChart3(data) {
           },
         },
         legend: {
-          display: true,
-          position: "bottom",
+          display: false,
+          position: "right",
           labels: {
             padding: 25,
             usePointStyle: true,
@@ -140,6 +205,7 @@ function drawChart3(data) {
         },
       },
     },
+    plugins: [htmlLegendPlugin_chart_3_h1b],
   });
   return myChart3;
 }

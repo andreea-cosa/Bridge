@@ -1,41 +1,109 @@
+const htmlLegendPlugin_chart_31_liquidated_damages = {
+  id: "chart_31_liquidated_damages_legends",
+  afterUpdate(chart, args, options) {
+    const ul = getOrCreateLegendList(
+      chart,
+      "chart_31_liquidated_damages_legends"
+    );
+
+    // Remove old legend items
+    while (ul.firstChild) {
+      ul.firstChild.remove();
+    }
+
+    // Reuse the built-in legendItems generator
+    const items = chart.options.plugins.legend.labels.generateLabels(chart);
+
+    items.forEach((item) => {
+      const li = document.createElement("li");
+      li.style.alignItems = "center";
+      li.style.cursor = "pointer";
+      li.style.display = "flex";
+      li.style.flexDirection = "row";
+      li.style.marginLeft = "10px";
+      // li.style.borderRadius = "15px";
+
+      li.onclick = () => {
+        const { type } = chart.config;
+        if (type === "pie" || type === "doughnut") {
+          // Pie and doughnut charts only have a single dataset and visibility is per item
+          chart.toggleDataVisibility(item.index);
+        } else {
+          chart.setDatasetVisibility(
+            item.datasetIndex,
+            !chart.isDatasetVisible(item.datasetIndex)
+          );
+        }
+        chart.update();
+      };
+
+      // Color box
+      const boxSpan = document.createElement("span");
+      boxSpan.style.background = item.fillStyle;
+      boxSpan.style.borderColor = item.strokeStyle;
+      boxSpan.style.borderWidth = item.lineWidth + "px";
+      boxSpan.style.display = "inline-block";
+      boxSpan.style.height = "20px";
+      boxSpan.style.marginRight = "10px";
+      boxSpan.style.width = "20px";
+      boxSpan.style.borderRadius = "40px";
+
+      // Text
+      const textContainer = document.createElement("p");
+      textContainer.style.color = item.fontColor;
+      textContainer.style.margin = 0;
+      textContainer.style.padding = 0;
+      textContainer.style.textAlign = "start";
+      textContainer.style.textDecoration = item.hidden ? "line-through" : "";
+
+      const text = document.createTextNode(item.text);
+      textContainer.appendChild(text);
+
+      li.appendChild(boxSpan);
+      li.appendChild(textContainer);
+      ul.appendChild(li);
+    });
+  },
+};
+
 function drawChart31(data) {
   let optionsObj31 = {};
 
   data.forEach((d) => {
     if (
       d[
-      "Do you have a liquidated damages clause that allows you to recoup immigration fees when an employee leaves your company within a specific time period?"
+        "Do you have a liquidated damages clause that allows you to recoup immigration fees when an employee leaves your company within a specific time period?"
       ] != "" &&
       optionsObj31[
-      d[
-      "Do you have a liquidated damages clause that allows you to recoup immigration fees when an employee leaves your company within a specific time period?"
-      ]
+        d[
+          "Do you have a liquidated damages clause that allows you to recoup immigration fees when an employee leaves your company within a specific time period?"
+        ]
       ] == undefined
     ) {
       optionsObj31[
         d[
-        "Do you have a liquidated damages clause that allows you to recoup immigration fees when an employee leaves your company within a specific time period?"
+          "Do you have a liquidated damages clause that allows you to recoup immigration fees when an employee leaves your company within a specific time period?"
         ]
       ] = 1;
     } else if (
       d[
-      "Do you have a liquidated damages clause that allows you to recoup immigration fees when an employee leaves your company within a specific time period?"
+        "Do you have a liquidated damages clause that allows you to recoup immigration fees when an employee leaves your company within a specific time period?"
       ] != "" &&
       optionsObj31[
-      d[
-      "Do you have a liquidated damages clause that allows you to recoup immigration fees when an employee leaves your company within a specific time period?"
-      ]
+        d[
+          "Do you have a liquidated damages clause that allows you to recoup immigration fees when an employee leaves your company within a specific time period?"
+        ]
       ] != undefined
     ) {
       optionsObj31[
         d[
-        "Do you have a liquidated damages clause that allows you to recoup immigration fees when an employee leaves your company within a specific time period?"
+          "Do you have a liquidated damages clause that allows you to recoup immigration fees when an employee leaves your company within a specific time period?"
         ]
       ] =
         optionsObj31[
-        d[
-        "Do you have a liquidated damages clause that allows you to recoup immigration fees when an employee leaves your company within a specific time period?"
-        ]
+          d[
+            "Do you have a liquidated damages clause that allows you to recoup immigration fees when an employee leaves your company within a specific time period?"
+          ]
         ] + 1;
     }
   });
@@ -83,7 +151,7 @@ function drawChart31(data) {
       },
       responsive: true,
       maintainAspectRatio: true,
-      aspectRatio: getAspectRatio(),
+      aspectRatio: 1,
       layout: {
         padding: {
           top: 11,
@@ -113,9 +181,10 @@ function drawChart31(data) {
                 return (
                   ctx31.chart.data.labels[ctx31.dataIndex] +
                   " " +
-                  `${Math.round(
-                    ((value / total31) * 100 + Number.EPSILON) * 100
-                  ) / 100
+                  `${
+                    Math.round(
+                      ((value / total31) * 100 + Number.EPSILON) * 100
+                    ) / 100
                   }%`
                 );
               },
@@ -145,7 +214,7 @@ function drawChart31(data) {
           },
         },
         legend: {
-          display: true,
+          display: false,
           position: "bottom",
           labels: {
             padding: 25,
@@ -163,6 +232,7 @@ function drawChart31(data) {
         },
       },
     },
+    plugins: [htmlLegendPlugin_chart_31_liquidated_damages],
   });
   return myChart31;
 }

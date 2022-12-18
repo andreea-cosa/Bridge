@@ -1,41 +1,106 @@
+const htmlLegendPlugin_chart_27_dependents = {
+  id: "chart_27_dependents_legends",
+  afterUpdate(chart, args, options) {
+    const ul = getOrCreateLegendList(chart, "chart_27_dependents_legends");
+
+    // Remove old legend items
+    while (ul.firstChild) {
+      ul.firstChild.remove();
+    }
+
+    // Reuse the built-in legendItems generator
+    const items = chart.options.plugins.legend.labels.generateLabels(chart);
+
+    items.forEach((item) => {
+      const li = document.createElement("li");
+      li.style.alignItems = "center";
+      li.style.cursor = "pointer";
+      li.style.display = "flex";
+      li.style.flexDirection = "row";
+      li.style.marginLeft = "10px";
+      // li.style.borderRadius = "15px";
+
+      li.onclick = () => {
+        const { type } = chart.config;
+        if (type === "pie" || type === "doughnut") {
+          // Pie and doughnut charts only have a single dataset and visibility is per item
+          chart.toggleDataVisibility(item.index);
+        } else {
+          chart.setDatasetVisibility(
+            item.datasetIndex,
+            !chart.isDatasetVisible(item.datasetIndex)
+          );
+        }
+        chart.update();
+      };
+
+      // Color box
+      const boxSpan = document.createElement("span");
+      boxSpan.style.background = item.fillStyle;
+      boxSpan.style.borderColor = item.strokeStyle;
+      boxSpan.style.borderWidth = item.lineWidth + "px";
+      boxSpan.style.display = "inline-block";
+      boxSpan.style.height = "20px";
+      boxSpan.style.marginRight = "10px";
+      boxSpan.style.width = "20px";
+      boxSpan.style.borderRadius = "40px";
+
+      // Text
+      const textContainer = document.createElement("p");
+      textContainer.style.color = item.fontColor;
+      textContainer.style.margin = 0;
+      textContainer.style.padding = 0;
+      textContainer.style.textAlign = "start";
+      textContainer.style.textDecoration = item.hidden ? "line-through" : "";
+
+      const text = document.createTextNode(item.text);
+      textContainer.appendChild(text);
+
+      li.appendChild(boxSpan);
+      li.appendChild(textContainer);
+      ul.appendChild(li);
+    });
+  },
+};
+
 function drawChart27(data) {
   let optionsObj27 = {};
 
   data.forEach((d) => {
     if (
       d[
-      "Do you cover non-immigrant visa costs for the employee's dependent family members?"
+        "Do you cover non-immigrant visa costs for the employee's dependent family members?"
       ] != "" &&
       optionsObj27[
-      d[
-      "Do you cover non-immigrant visa costs for the employee's dependent family members?"
-      ]
+        d[
+          "Do you cover non-immigrant visa costs for the employee's dependent family members?"
+        ]
       ] == undefined
     ) {
       optionsObj27[
         d[
-        "Do you cover non-immigrant visa costs for the employee's dependent family members?"
+          "Do you cover non-immigrant visa costs for the employee's dependent family members?"
         ]
       ] = 1;
     } else if (
       d[
-      "Do you cover non-immigrant visa costs for the employee's dependent family members?"
+        "Do you cover non-immigrant visa costs for the employee's dependent family members?"
       ] != "" &&
       optionsObj27[
-      d[
-      "Do you cover non-immigrant visa costs for the employee's dependent family members?"
-      ]
+        d[
+          "Do you cover non-immigrant visa costs for the employee's dependent family members?"
+        ]
       ] != undefined
     ) {
       optionsObj27[
         d[
-        "Do you cover non-immigrant visa costs for the employee's dependent family members?"
+          "Do you cover non-immigrant visa costs for the employee's dependent family members?"
         ]
       ] =
         optionsObj27[
-        d[
-        "Do you cover non-immigrant visa costs for the employee's dependent family members?"
-        ]
+          d[
+            "Do you cover non-immigrant visa costs for the employee's dependent family members?"
+          ]
         ] + 1;
     }
   });
@@ -81,7 +146,7 @@ function drawChart27(data) {
       },
       responsive: true,
       maintainAspectRatio: true,
-      aspectRatio: getAspectRatio(),
+      aspectRatio: 1,
       layout: {
         padding: {
           top: 11,
@@ -110,13 +175,14 @@ function drawChart27(data) {
               formatter: function (value, ctx27) {
                 return ctx27.chart.data.labels[ctx27.dataIndex].length > 25
                   ? ctx27.chart.data.labels[ctx27.dataIndex].substring(0, 25) +
-                  "..."
+                      "..."
                   : ctx27.chart.data.labels[ctx27.dataIndex] +
-                  " " +
-                  `${Math.round(
-                    ((value / total27) * 100 + Number.EPSILON) * 100
-                  ) / 100
-                  }%`;
+                      " " +
+                      `${
+                        Math.round(
+                          ((value / total27) * 100 + Number.EPSILON) * 100
+                        ) / 100
+                      }%`;
               },
               offset: 3,
             },
@@ -144,8 +210,8 @@ function drawChart27(data) {
           },
         },
         legend: {
-          display: true,
-          position: "bottom",
+          display: false,
+          position: "right",
           labels: {
             padding: 25,
             usePointStyle: true,
@@ -162,6 +228,7 @@ function drawChart27(data) {
         },
       },
     },
+    plugins: [htmlLegendPlugin_chart_27_dependents],
   });
   return myChart27;
 }

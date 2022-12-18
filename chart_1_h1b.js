@@ -1,3 +1,67 @@
+const htmlLegendPlugin = {
+  id: "chart_1_h1b_legends",
+  afterUpdate(chart, args, options) {
+    const ul = getOrCreateLegendList(chart, "chart_1_h1b_legends");
+
+    // Remove old legend items
+    while (ul.firstChild) {
+      ul.firstChild.remove();
+    }
+
+    // Reuse the built-in legendItems generator
+    const items = chart.options.plugins.legend.labels.generateLabels(chart);
+
+    items.forEach((item) => {
+      const li = document.createElement("li");
+      li.style.alignItems = "center";
+      li.style.cursor = "pointer";
+      li.style.display = "flex";
+      li.style.flexDirection = "row";
+      li.style.marginLeft = "10px";
+      // li.style.borderRadius = "15px";
+
+      li.onclick = () => {
+        const { type } = chart.config;
+        if (type === "pie" || type === "doughnut") {
+          // Pie and doughnut charts only have a single dataset and visibility is per item
+          chart.toggleDataVisibility(item.index);
+        } else {
+          chart.setDatasetVisibility(
+            item.datasetIndex,
+            !chart.isDatasetVisible(item.datasetIndex)
+          );
+        }
+        chart.update();
+      };
+
+      // Color box
+      const boxSpan = document.createElement("span");
+      boxSpan.style.background = item.fillStyle;
+      boxSpan.style.borderColor = item.strokeStyle;
+      boxSpan.style.borderWidth = item.lineWidth + "px";
+      boxSpan.style.display = "inline-block";
+      boxSpan.style.height = "20px";
+      boxSpan.style.marginRight = "10px";
+      boxSpan.style.width = "20px";
+      boxSpan.style.borderRadius = "40px";
+
+      // Text
+      const textContainer = document.createElement("p");
+      textContainer.style.color = item.fontColor;
+      textContainer.style.margin = 0;
+      textContainer.style.padding = 0;
+      textContainer.style.textDecoration = item.hidden ? "line-through" : "";
+
+      const text = document.createTextNode(item.text);
+      textContainer.appendChild(text);
+
+      li.appendChild(boxSpan);
+      li.appendChild(textContainer);
+      ul.appendChild(li);
+    });
+  },
+};
+
 let total1 = 0;
 
 function drawChart1(data) {
@@ -54,19 +118,21 @@ function drawChart1(data) {
       },
       responsive: true,
       maintainAspectRatio: true,
-
+      aspectRatio: 1,
       layout: {
         padding: {
           top: 11,
         },
       },
-      plugins: {
-        // deferred: {
-        //   xOffset: 151, // defer until 150px of the canvas width are inside the viewport
-        //   yOffset: "51%", // defer until 50% of the canvas height are inside the viewport
-        //   delay: 201, // delay of 500 ms after the canvas is considered inside the viewport
-        // },
 
+      plugins: {
+        htmlLegend: {
+          // ID of the container to put the legend in
+          containerID: "chart_1_h1b_legends",
+        },
+        legend: {
+          display: false,
+        },
         datalabels: {
           display: false,
           labels: {
@@ -116,13 +182,40 @@ function drawChart1(data) {
           },
         },
         legend: {
-          display: true,
-          position: "bottom",
+          display: false,
+          position: "right",
           labels: {
             padding: 21,
             usePointStyle: true,
             boxWidth: 7,
           },
+          // legendCallback: function (chart) {
+          //   var text = [];
+          //   text.push('<ul class="0-legend">');
+          //   var ds = chart.data.datasets[0];
+          //   var sum = ds.data.reduce(function add(a, b) {
+          //     return a + b;
+          //   }, 0);
+          //   for (var i = 0; i < ds.data.length; i++) {
+          //     text.push("<li>");
+          //     var perc = Math.round((100 * ds.data[i]) / sum, 0);
+          //     text.push(
+          //       '<span style="background-color:' +
+          //         ds.backgroundColor[i] +
+          //         '">' +
+          //         "</span>" +
+          //         chart.data.labels[i] +
+          //         " (" +
+          //         ds.data[i] +
+          //         ") (" +
+          //         perc +
+          //         "%)"
+          //     );
+          //     text.push("</li>");
+          //   }
+          //   text.push("</ul>");
+          //   return text.join("");
+          // },
         },
       },
       scales: {
@@ -134,6 +227,8 @@ function drawChart1(data) {
         },
       },
     },
+    plugins: [htmlLegendPlugin],
   });
+
   return myChart1;
 }

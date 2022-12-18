@@ -1,4 +1,4 @@
-d3.csv("https://uploads-ssl.webflow.com/5d678d8bf62c496d0b518eb4/636e58544fd41cf6c6f1d69f_master_data.csv").then(
+d3.csv("GC Survey Sample Data for Upwork - Cleaned Master Data.csv").then(
   function (rawData) {
     let industryObj = {},
       employeesObj = {},
@@ -133,6 +133,7 @@ d3.csv("https://uploads-ssl.webflow.com/5d678d8bf62c496d0b518eb4/636e58544fd41cf
       // chart33,
       chart34;
 
+    $(".responses").text(rawData.length + " responses");
     drawCharts(rawData);
 
     ///filters calling
@@ -148,6 +149,8 @@ d3.csv("https://uploads-ssl.webflow.com/5d678d8bf62c496d0b518eb4/636e58544fd41cf
       );
 
       deleteCharts();
+
+      $(".responses").text(tempData.length + " responses");
       // if (tempData.length > 0) {
       drawCharts(tempData);
       // }
@@ -165,6 +168,8 @@ d3.csv("https://uploads-ssl.webflow.com/5d678d8bf62c496d0b518eb4/636e58544fd41cf
 
       deleteCharts();
 
+      $(".responses").text(tempData.length + " responses");
+
       drawCharts(tempData);
     });
 
@@ -179,6 +184,8 @@ d3.csv("https://uploads-ssl.webflow.com/5d678d8bf62c496d0b518eb4/636e58544fd41cf
       );
 
       deleteCharts();
+
+      $(".responses").text(tempData.length + " responses");
 
       drawCharts(tempData);
     });
@@ -216,6 +223,8 @@ d3.csv("https://uploads-ssl.webflow.com/5d678d8bf62c496d0b518eb4/636e58544fd41cf
       document.getElementById(
         "percentile_33_liquidated_damages_input1"
       ).checked = true;
+
+      $(".responses").text(rawData.length + " responses");
 
       deleteCharts();
       drawCharts(rawData);
@@ -328,7 +337,6 @@ d3.csv("https://uploads-ssl.webflow.com/5d678d8bf62c496d0b518eb4/636e58544fd41cf
     });
 
     $("#percentile_7_h1b_tab4").click(function (d) {
-      console.log("786 75th percentile");
       percentile7 = 75;
       calculatePercentile_7_h1b(
         filterData(selectedEmployee, selectedIndustry, selectedState),
@@ -790,6 +798,7 @@ const getOrCreateTooltip = (chart) => {
 
   if (!tooltipEl) {
     tooltipEl = document.createElement("div");
+    tooltipEl.id = "div";
     tooltipEl.style.background = "rgba(0, 0, 0, 0.7)";
     tooltipEl.style.borderRadius = "3px";
     tooltipEl.style.color = "white";
@@ -850,11 +859,12 @@ const externalTooltipHandler = (context, total) => {
       td.style.borderWidth = 0;
 
       const text = document.createTextNode(
-        `${body} (${Math.round(
-          ((parseFloat(body[0].split(":")[1].split(" ")[1]) / total) * 100 +
-            Number.EPSILON) *
-          100
-        ) / 100
+        `${body} (${
+          Math.round(
+            ((parseFloat(body[0].split(":")[1].split(" ")[1]) / total) * 100 +
+              Number.EPSILON) *
+              100
+          ) / 100
         })%`
       );
 
@@ -886,9 +896,20 @@ const externalTooltipHandler = (context, total) => {
     tooltip.options.padding + "px " + tooltip.options.padding + "px";
 };
 
-const getAspectRatio = () => {
-  if (window.innerWidth < 768) {
-    return 0.7;
+const getOrCreateLegendList = (chart, id) => {
+  const legendContainer = document.getElementById(id);
+  let listContainer = legendContainer.querySelector("ul");
+
+  if (!listContainer) {
+    listContainer = document.createElement("ul");
+    listContainer.style.display = "flex";
+    listContainer.style.flexDirection = "column";
+    listContainer.style.margin = 0;
+    listContainer.style.padding = 0;
+    // listContainer.style.borderRadius = "15px";
+
+    legendContainer.appendChild(listContainer);
   }
-  return 1;
+
+  return listContainer;
 };
