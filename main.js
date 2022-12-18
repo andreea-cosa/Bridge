@@ -1,4 +1,4 @@
-d3.csv("GC Survey Sample Data for Upwork - Cleaned Master Data.csv").then(
+d3.csv("https://uploads-ssl.webflow.com/5d678d8bf62c496d0b518eb4/636e58544fd41cf6c6f1d69f_master_data.csv").then(
   function (rawData) {
     let industryObj = {},
       employeesObj = {},
@@ -859,12 +859,11 @@ const externalTooltipHandler = (context, total) => {
       td.style.borderWidth = 0;
 
       const text = document.createTextNode(
-        `${body} (${
-          Math.round(
-            ((parseFloat(body[0].split(":")[1].split(" ")[1]) / total) * 100 +
-              Number.EPSILON) *
-              100
-          ) / 100
+        `${body} (${Math.round(
+          ((parseFloat(body[0].split(":")[1].split(" ")[1]) / total) * 100 +
+            Number.EPSILON) *
+          100
+        ) / 100
         })%`
       );
 
