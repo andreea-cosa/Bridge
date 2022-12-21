@@ -204,15 +204,6 @@ function drawChart34(data) {
           display: false,
           position: "right",
           labels: {
-            generateLabels: (chart) =>
-              chart.data.labels.map((l, i) => ({
-                datasetIndex: 0,
-                index: i,
-                text: l.length > 35 ? l.substring(0, 38) : l,
-                fillStyle: chart.data.datasets[0].backgroundColor[i],
-                strokeStyle: chart.data.datasets[0].backgroundColor[i],
-                hidden: false,
-              })),
             padding: 25,
             usePointStyle: true,
             boxWidth: 7,
